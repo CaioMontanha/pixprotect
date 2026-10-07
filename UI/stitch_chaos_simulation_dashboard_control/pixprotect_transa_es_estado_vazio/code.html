@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PIXPROTECT - Transações</title>
+<!-- Inter Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-fixed": "#141b2b",
+            "on-secondary": "#ffffff",
+            "surface-variant": "#dce2f3",
+            "surface-container": "#e7eefe",
+            "tertiary-container": "#007d55",
+            "background": "#f9f9ff",
+            "on-background": "#151c27",
+            "tertiary-fixed": "#6ffbbe",
+            "surface-container-low": "#f0f3ff",
+            "error-container": "#ffdad6",
+            "on-primary": "#ffffff",
+            "secondary-fixed": "#dce2f7",
+            "surface-container-high": "#e2e8f8",
+            "inverse-surface": "#2a313d",
+            "on-tertiary": "#ffffff",
+            "primary": "#004ac6",
+            "surface-bright": "#f9f9ff",
+            "inverse-on-surface": "#ebf1ff",
+            "on-tertiary-fixed-variant": "#005236",
+            "on-primary-fixed-variant": "#003ea8",
+            "outline-variant": "#c3c6d7",
+            "tertiary-fixed-dim": "#4edea3",
+            "on-tertiary-fixed": "#002113",
+            "on-error": "#ffffff",
+            "on-secondary-fixed-variant": "#404758",
+            "secondary": "#575e70",
+            "on-error-container": "#93000a",
+            "error": "#ba1a1a",
+            "surface-dim": "#d3daea",
+            "tertiary": "#006242",
+            "on-secondary-container": "#5c6274",
+            "primary-fixed": "#dbe1ff",
+            "on-primary-fixed": "#00174b",
+            "on-surface": "#151c27",
+            "primary-container": "#2563eb",
+            "surface-container-highest": "#dce2f3",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-container": "#bdffdb",
+            "secondary-container": "#d9dff5",
+            "outline": "#737686",
+            "on-surface-variant": "#434655",
+            "primary-fixed-dim": "#b4c5ff",
+            "inverse-primary": "#b4c5ff",
+            "surface-tint": "#0053db",
+            "secondary-fixed-dim": "#c0c6db",
+            "on-primary-container": "#eeefff",
+            "surface": "#f9f9ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-mobile": "1rem",
+            "gutter": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2rem",
+            "gutter-mobile": "1rem",
+            "margin": "1.5rem",
+            "space-lg": "1.5rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "body-md": ["Inter"],
+            "body-sm": ["Inter"],
+            "headline-xl": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "headline-lg": ["Inter"],
+            "body-lg": ["Inter"],
+            "code-mono": ["Inter"],
+            "headline-xl-mobile": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-md": ["Inter"]
+          },
+          "fontSize": {
+            "body-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-xl": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.025em", "fontWeight": "700" }],
+            "label-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-lg": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-lg": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "code-mono": ["0.8125rem", { "lineHeight": "1.125rem", "letterSpacing": "0em", "fontWeight": "500" }],
+            "headline-xl-mobile": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0em", "fontWeight": "500" }],
+            "headline-md": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #F7F8FA;
+    }
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+</head>
+<body class="min-h-screen text-on-surface antialiased flex flex-row">
+<!-- SideNavBar: Authority from Shared Components JSON -->
+<aside class="fixed top-0 left-0 h-screen w-64 border-r border-outline-variant bg-surface-container-lowest shadow-sm z-40 flex flex-col justify-between p-space-md">
+<div class="flex flex-col gap-space-lg">
+<!-- Brand Logo & Header -->
+<div class="flex items-center gap-space-sm px-space-xs py-space-xs">
+<div class="h-10 w-10 rounded-lg bg-primary flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-[24px]">verified_user</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="text-headline-md font-headline-md font-bold text-primary tracking-tight">PIXPROTECT</span>
+<span class="text-[10px] font-label-sm font-semibold bg-surface-container text-on-surface-variant px-1.5 py-0.5 rounded">v1.0</span>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Prevenção de Fraude PIX</span>
+</div>
+</div>
+<!-- Main Navigation Menu -->
+<nav aria-label="Navegação Principal" class="flex flex-col gap-1">
+<!-- Tab 1: Dashboard (Inactive) -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant rounded-lg font-normal hover:bg-surface-container transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<!-- Tab 2: Transações (Active - Current screen destination) -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm bg-primary-container text-on-primary-container rounded-lg font-medium shadow-sm transition-colors duration-150" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-label-md font-label-md">Transações</span>
+</a>
+</nav>
+</div>
+<!-- Bottom Footer Meta (Produção Ativo) -->
+<div class="pt-space-md border-t border-outline-variant/60 flex flex-col gap-space-sm">
+<div class="flex items-center gap-2 px-space-sm py-1.5 bg-surface-container-low rounded-lg text-on-surface-variant">
+<span class="h-2 w-2 rounded-full bg-[#10B981] animate-pulse"></span>
+<span class="material-symbols-outlined text-[18px] text-[#059669]">check_circle</span>
+<span class="text-label-sm font-label-sm text-on-surface">Ambiente: Produção (Ativo)</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Area Canvas -->
+<main class="ml-64 flex-1 min-h-screen flex flex-col bg-[#F7F8FA]">
+<!-- Top Header Bar Container -->
+<header class="sticky top-0 w-full bg-surface-container-lowest border-b border-outline-variant/60 z-30 shadow-sm px-space-lg py-space-md flex justify-between items-center">
+<div class="flex items-center gap-space-md">
+<span class="text-label-md font-label-md text-on-surface-variant font-medium">Monitoramento em Tempo Real</span>
+<span class="text-outline-variant">/</span>
+<span class="text-label-md font-label-md text-primary font-semibold">Feed de Transações</span>
+</div>
+<div class="flex items-center gap-space-md">
+<!-- Actions & Profile Info -->
+<button class="flex items-center justify-center p-2 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors duration-150 relative" type="button">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full ring-2 ring-surface-container-lowest"></span>
+</button>
+<button class="flex items-center justify-center p-2 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors duration-150" type="button">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<div class="h-6 w-[1px] bg-outline-variant/60"></div>
+<div class="flex items-center gap-2.5 pl-1">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold text-label-sm">
+            AR
+          </div>
+<div class="flex flex-col text-left">
+<span class="text-label-sm font-label-sm text-on-surface leading-tight font-semibold">Analista de Risco</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant text-[11px] leading-tight">SOC Anti-fraude</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Workspace Wrapper -->
+<div class="p-space-lg flex-1 flex flex-col gap-space-lg max-w-7xl w-full mx-auto">
+<!-- Workspace Page Title & Description -->
+<div class="flex flex-col gap-1">
+<h1 class="text-headline-lg font-headline-lg text-[#111827]">Transações</h1>
+<p class="text-body-md font-body-md text-on-surface-variant">Transações analisadas pelo motor de regras e heurísticas de risco em tempo real</p>
+</div>
+<!-- Filter Controls Section -->
+<div class="flex flex-wrap items-center justify-between gap-space-md pb-space-xs">
+<!-- Risk Filter Chips Segment -->
+<div aria-label="Filtro de Risco" class="flex items-center gap-2" role="group">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider mr-1">Risco:</span>
+<!-- Chip: Todos -->
+<button class="px-3 py-1.5 text-label-sm font-label-sm rounded-md border border-[#E5E7EB] bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors duration-150" type="button">
+            Todos
+          </button>
+<!-- Chip: Baixo -->
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-label-sm font-label-sm rounded-md border border-[#A7F3D0] bg-[#ECFDF5] text-[#065F46] hover:bg-[#D1FAE5] transition-colors duration-150" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-[#059669]"></span>
+            Baixo
+          </button>
+<!-- Chip: Médio -->
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-label-sm font-label-sm rounded-md border border-[#FDE68A] bg-[#FFFBEB] text-[#92400E] hover:bg-[#FEF3C7] transition-colors duration-150" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-[#D97706]"></span>
+            Médio
+          </button>
+<!-- Chip: Alto (Active Filter Causing 0 Results State) -->
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-label-sm font-label-sm rounded-md border-2 border-[#FECACA] bg-[#FEF2F2] text-[#991B1B] shadow-sm ring-2 ring-error/10 font-bold transition-all" type="button">
+<span class="w-2 h-2 rounded-full bg-[#DC2626]"></span>
+            Alto
+            <span class="ml-1 text-[11px] bg-[#FEE2E2] text-[#991B1B] px-1.5 py-0.2 rounded-full font-bold">0</span>
+</button>
+</div>
+<!-- Secondary Search Indicator -->
+<div class="flex items-center gap-2">
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-outline text-[18px]">search</span>
+<input class="w-full bg-surface-container-lowest border border-[#E5E7EB] rounded-lg text-body-sm font-body-sm pl-9 pr-3 py-2 text-[#111827] placeholder-[#9CA3AF] opacity-80 cursor-default focus:ring-0 focus:outline-none" disabled="" placeholder="Filtrar por End-to-End Id..." type="text" value=""/>
+</div>
+</div>
+</div>
+<!-- Transactions Table Card Structure (Level 1 Elevation) -->
+<div class="bg-surface-container-lowest border border-[#E5E7EB] rounded-lg shadow-sm flex flex-col overflow-hidden">
+<!-- Table Element with Strict Standard Header -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-[#F9FAFB] border-b border-[#E5E7EB] text-label-sm font-label-sm text-[#6B7280] uppercase tracking-wider select-none">
+<th class="py-3 px-4 font-semibold" scope="col">Código</th>
+<th class="py-3 px-4 font-semibold" scope="col">Valor</th>
+<th class="py-3 px-4 font-semibold" scope="col">Horário</th>
+<th class="py-3 px-4 font-semibold" scope="col">Origem → Destino</th>
+<th class="py-3 px-4 font-semibold" scope="col">Risco</th>
+<th class="py-3 px-4 font-semibold text-right" scope="col">Score</th>
+</tr>
+</thead>
+<tbody>
+<!-- Empty State Row spanning all 6 columns -->
+<tr>
+<td class="p-0" colspan="6">
+<div class="flex flex-col items-center justify-center text-center py-24 px-6">
+<!-- Clean Minimalist Vector SVG Icon Container -->
+<div class="w-16 h-16 rounded-2xl bg-surface-container-low border border-outline-variant/50 flex items-center justify-center mb-5 text-primary shadow-xs">
+<svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 24 24">
+<!-- Receipt / Document lines with search scan emblem -->
+<path d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" fill="#F8FAFC" stroke="#94A3B8"></path>
+<path d="M8 8h8" stroke="#CBD5E1"></path>
+<path d="M8 12h5" stroke="#CBD5E1"></path>
+<!-- Empty Document Dash -->
+<path d="M8 16h3" stroke="#CBD5E1"></path>
+<!-- Small Magnifier scanning zero data -->
+<circle cx="16" cy="15" fill="#EFF6FF" r="3.5" stroke="#2563EB" stroke-width="1.8"></circle>
+<line stroke="#2563EB" stroke-width="1.8" x1="18.5" x2="21" y1="17.5" y2="20"></line>
+</svg>
+</div>
+<!-- Primary Message -->
+<h3 class="text-headline-md font-headline-md font-semibold text-[#111827] mb-1.5">
+                      Nenhuma transação encontrada
+                    </h3>
+<!-- Secondary Clarifying Message -->
+<p class="text-body-md font-body-md text-[#6B7280] max-w-sm">
+                      Não existem transações correspondentes ao filtro selecionado.
+                    </p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Strict Table Pagination Footer with Disabled Controls -->
+<div class="px-4 py-3 bg-[#F9FAFB] border-t border-[#E5E7EB] flex items-center justify-between text-body-sm font-body-sm">
+<div class="text-[#6B7280]">
+            Exibindo <span class="font-medium text-[#111827] tabular-nums">0</span> de <span class="font-medium text-[#111827] tabular-nums">0</span> transações
+          </div>
+<div class="flex items-center gap-2">
+<!-- Botão Anterior Desabilitado -->
+<button class="inline-flex items-center gap-1 px-3 py-1.5 rounded border border-[#E5E7EB] bg-surface-container-lowest text-[#9CA3AF] cursor-not-allowed opacity-60 font-medium" disabled="" type="button">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+              Anterior
+            </button>
+<!-- Botão Próximo Desabilitado -->
+<button class="inline-flex items-center gap-1 px-3 py-1.5 rounded border border-[#E5E7EB] bg-surface-container-lowest text-[#9CA3AF] cursor-not-allowed opacity-60 font-medium" disabled="" type="button">
+              Próximo
+              <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Supplementary Context Note (Corporate Security Rigor) -->
+<div class="flex items-center justify-between px-1 text-body-sm font-body-sm text-[#9CA3AF]">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-tertiary">lock</span>
+<span>Motor de regras PIXPROTECT v1.0 operacional em latência média de 42ms</span>
+</div>
+<div>
+<span>Última sincronização: Agora mesmo</span>
+</div>
+</div>
+</div>
+</main>
+</body></html>

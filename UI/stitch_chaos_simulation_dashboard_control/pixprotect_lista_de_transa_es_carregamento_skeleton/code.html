@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PIXPROTECT - Transações</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-tint": "#0053db",
+            "on-secondary-container": "#5c6274",
+            "on-background": "#151c27",
+            "primary": "#004ac6",
+            "on-secondary-fixed-variant": "#404758",
+            "inverse-primary": "#b4c5ff",
+            "background": "#f9f9ff",
+            "on-surface-variant": "#434655",
+            "on-primary-fixed": "#00174b",
+            "on-primary-container": "#eeefff",
+            "surface": "#f9f9ff",
+            "surface-container-low": "#f0f3ff",
+            "error": "#ba1a1a",
+            "surface-bright": "#f9f9ff",
+            "secondary-fixed": "#dce2f7",
+            "on-primary": "#ffffff",
+            "primary-container": "#2563eb",
+            "secondary-fixed-dim": "#c0c6db",
+            "tertiary-fixed": "#6ffbbe",
+            "outline": "#737686",
+            "tertiary-container": "#007d55",
+            "tertiary": "#006242",
+            "inverse-surface": "#2a313d",
+            "error-container": "#ffdad6",
+            "primary-fixed": "#dbe1ff",
+            "tertiary-fixed-dim": "#4edea3",
+            "surface-dim": "#d3daea",
+            "inverse-on-surface": "#ebf1ff",
+            "on-secondary-fixed": "#141b2b",
+            "on-error": "#ffffff",
+            "primary-fixed-dim": "#b4c5ff",
+            "secondary-container": "#d9dff5",
+            "outline-variant": "#c3c6d7",
+            "secondary": "#575e70",
+            "surface-container-highest": "#dce2f3",
+            "on-tertiary": "#ffffff",
+            "on-error-container": "#93000a",
+            "on-primary-fixed-variant": "#003ea8",
+            "surface-container": "#e7eefe",
+            "surface-variant": "#dce2f3",
+            "on-tertiary-fixed": "#002113",
+            "on-secondary": "#ffffff",
+            "surface-container-high": "#e2e8f8",
+            "on-tertiary-fixed-variant": "#005236",
+            "on-tertiary-container": "#bdffdb",
+            "on-surface": "#151c27",
+            "surface-container-lowest": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "gutter": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-xl": "2rem",
+            "space-xs": "0.25rem",
+            "gutter-mobile": "1rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "body-md": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-xl-mobile": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-lg": ["Inter"],
+            "code-mono": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-xl": ["Inter"],
+            "body-sm": ["Inter"]
+          },
+          "fontSize": {
+            "body-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0em", "fontWeight": "500" }],
+            "headline-lg-mobile": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-md": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-xl-mobile": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-lg": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "code-mono": ["0.8125rem", { "lineHeight": "1.125rem", "letterSpacing": "0em", "fontWeight": "500" }],
+            "label-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-xl": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.025em", "fontWeight": "700" }],
+            "body-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0em", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col font-body-md selection:bg-primary-container selection:text-on-primary">
+<!-- Side Navigation Bar (Shared Component Anchor) -->
+<aside class="fixed top-0 left-0 h-screen w-64 border-r border-outline-variant dark:border-outline bg-surface-container-lowest dark:bg-inverse-surface shadow-sm dark:shadow-none z-40 hidden md:block">
+<div class="flex flex-col justify-between h-full p-space-md w-64">
+<!-- Top Section with Brand -->
+<div class="flex flex-col gap-space-lg">
+<!-- Logo & Brand Header -->
+<div class="flex items-start gap-space-sm px-space-xs">
+<div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-on-primary shadow-sm flex-shrink-0">
+<span class="material-symbols-outlined text-headline-md" data-icon="shield">shield</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-inverse-primary tracking-tight">PIXPROTECT</span>
+<span class="text-label-sm font-label-sm px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-medium">v1.0</span>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Prevenção de Fraude PIX</span>
+</div>
+</div>
+<!-- Action Button (CTA from JSON) -->
+<button class="w-full flex items-center justify-center gap-space-xs px-space-md py-2.5 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface text-label-md font-label-md hover:bg-surface-container transition-colors duration-150 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="add_circle">add_circle</span>
+<span>Gerar transação de teste</span>
+</button>
+<!-- Navigation Tabs (JSON: Dashboard, Transações) - "Transações" is ACTIVE -->
+<nav aria-label="Navegação Lateral" class="flex flex-col gap-1">
+<!-- Inactive Tab: Dashboard -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant dark:text-outline-variant rounded-lg font-normal hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<!-- Active Tab: Transações -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm bg-primary-container text-on-primary-container rounded-lg font-medium hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors duration-150 shadow-sm" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="receipt_long">receipt_long</span>
+<span class="text-label-md font-label-md">Transações</span>
+</a>
+</nav>
+</div>
+<!-- Footer Section (JSON Spec & Environment status) -->
+<div class="flex flex-col gap-space-sm pt-space-md border-t border-outline-variant">
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant px-space-xs">
+<span class="text-label-sm font-label-sm text-on-surface-variant">SLA Motor PIX</span>
+<span class="text-label-sm font-label-sm font-semibold text-tertiary">99.98%</span>
+</div>
+<div class="flex items-center gap-space-xs px-space-xs text-body-sm font-body-sm text-tertiary font-medium">
+<span class="material-symbols-outlined text-[18px] text-tertiary" data-icon="check_circle">check_circle</span>
+<span class="text-body-sm font-body-sm">Ambiente: Produção (Ativo)</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Top App Bar (Shared Component Anchor) -->
+<header class="sticky top-0 w-full border-b border-outline-variant dark:border-outline z-30 bg-surface-container-lowest dark:bg-inverse-surface shadow-sm dark:shadow-none md:pl-64">
+<div class="flex justify-between items-center w-full px-space-lg py-space-md">
+<!-- Left: Breadcrumb / Path status -->
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center gap-space-xs text-body-sm font-body-sm text-on-surface-variant">
+<span class="font-medium text-on-surface">PIXPROTECT</span>
+<span class="text-outline">/</span>
+<span class="text-primary font-medium">Transações</span>
+</div>
+<div class="h-4 w-px bg-outline-variant mx-1"></div>
+<div class="hidden sm:flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container text-body-sm font-body-sm text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
+<span class="text-label-sm font-label-sm">Heurísticas Ativas</span>
+</div>
+</div>
+<!-- Right: Trailing Actions, Notifications, Profile -->
+<div class="flex items-center gap-space-md">
+<!-- Action Button (from JSON TopNavBar) -->
+<button class="hidden lg:inline-flex items-center gap-space-xs px-3 py-1.5 rounded-lg bg-primary-container text-on-primary-container text-label-md font-label-md hover:bg-primary transition-colors duration-150" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="add_circle">add_circle</span>
+<span>Gerar transação de teste</span>
+</button>
+<!-- Trailing Icons: notifications, help_outline -->
+<button aria-label="Notificações" class="p-2 text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors duration-150 relative" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button aria-label="Ajuda" class="p-2 text-on-surface-variant hover:bg-surface-container rounded-lg transition-colors duration-150" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="help_outline">help_outline</span>
+</button>
+<!-- Risk Analyst User Profile -->
+<div class="flex items-center gap-space-sm pl-2 border-l border-outline-variant">
+<img class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A professional headshot of a financial fraud analyst in modern corporate attire against a neutral studio backdrop with soft focused lighting and calm analytical expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAoh6MLqqsTmHonbclAriuOP1wmVQu76j4zmVYaMtBXWVFscUZbTmbBHzWVd9N-Qm5D0dBeddBc3A7SU_UUQwLa_gDob5GzL3h4wZbrHGUFQegDhCDUuuReICCPgIgpsYO9ZvC9E0_s-eHB2ObIg1ScvRe4Udr279FXTjI0kCkgJPwBaHa-qiMqXIoElkP8MV_otaHQyccGUcvwpNezQypNkOQ0xY0-5PdI6M2PLs"/>
+<div class="hidden sm:flex flex-col text-left">
+<span class="text-label-md font-label-md leading-tight text-on-surface">Rafael C.</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant leading-none">Analista de Risco</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas (Desktop left offset 256px / 64 tailwind units) -->
+<main class="flex-1 md:pl-64 p-space-lg flex flex-col gap-space-lg max-w-[1600px] w-full mx-auto">
+<!-- Title & Operational Subtitle -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-space-sm">
+<div class="flex flex-col">
+<h1 class="text-headline-lg font-headline-lg text-on-surface tracking-tight">Transações</h1>
+<p class="text-body-md font-body-md text-on-surface-variant">Transações analisadas pelo motor de regras e heurísticas de risco em tempo real</p>
+</div>
+<!-- Real-time Async status indicator -->
+<div class="flex items-center gap-space-xs self-start sm:self-auto px-3 py-1.5 bg-surface-container-lowest border border-outline-variant rounded-lg shadow-sm">
+<div class="w-2.5 h-2.5 rounded-full bg-primary-container animate-ping"></div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Sincronizando stream PIX...</span>
+</div>
+</div>
+<!-- Filters Bar & Search Bento Unit -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant p-space-md shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<!-- Risk Chips Horizontal Bar -->
+<div aria-label="Filtro de Risco" class="flex items-center gap-2 overflow-x-auto pb-1 lg:pb-0" role="group">
+<!-- 'Todos' Tab Active -->
+<button class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-on-surface text-surface-container-lowest text-label-md font-label-md shadow-sm" type="button">
+<span>Todos</span>
+<span class="w-5 h-4 rounded bg-surface-variant/40 animate-pulse inline-block"></span>
+</button>
+<!-- 'Baixo' Chip -->
+<button class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface-variant text-label-md font-label-md hover:bg-surface-container transition-colors" type="button">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span>Baixo</span>
+<span class="w-4 h-3.5 rounded bg-surface-container-highest animate-pulse inline-block"></span>
+</button>
+<!-- 'Médio' Chip -->
+<button class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface-variant text-label-md font-label-md hover:bg-surface-container transition-colors" type="button">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+<span>Médio</span>
+<span class="w-4 h-3.5 rounded bg-surface-container-highest animate-pulse inline-block"></span>
+</button>
+<!-- 'Alto' Chip -->
+<button class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-surface-container-lowest border border-outline-variant text-on-surface-variant text-label-md font-label-md hover:bg-surface-container transition-colors" type="button">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span>Alto</span>
+<span class="w-4 h-3.5 rounded bg-surface-container-highest animate-pulse inline-block"></span>
+</button>
+</div>
+<!-- Search Field and Operational Controls -->
+<div class="flex flex-wrap sm:flex-nowrap items-center gap-space-sm">
+<div class="relative flex-1 sm:w-72">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-outline text-[18px]" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg pl-9 pr-3 py-2 text-body-md font-body-md text-on-surface-variant placeholder:text-outline cursor-not-allowed opacity-75" disabled="" placeholder="Buscar por chave PIX, End-to-End..." type="text"/>
+</div>
+<button class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface-variant text-label-md font-label-md opacity-60 cursor-not-allowed" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="tune">tune</span>
+<span>Filtros</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface-variant text-label-md font-label-md opacity-60 cursor-not-allowed" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="calendar_today">calendar_today</span>
+<span>Hoje (24h)</span>
+</button>
+</div>
+</div>
+<!-- Administrative Data Table in Skeleton Loading State (CLS Zero Guard) -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse min-w-[900px]">
+<!-- Table Header -->
+<thead>
+<tr class="bg-surface-container-low/70 border-b border-outline-variant">
+<th class="py-3 px-space-md text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider w-[18%]" scope="col">CÓDIGO</th>
+<th class="py-3 px-space-md text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider w-[15%]" scope="col">VALOR</th>
+<th class="py-3 px-space-md text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider w-[12%]" scope="col">HORÁRIO</th>
+<th class="py-3 px-space-md text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider w-[32%]" scope="col">ORIGEM → DESTINO</th>
+<th class="py-3 px-space-md text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider w-[11%]" scope="col">RISCO</th>
+<th class="py-3 px-space-md text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider w-[12%]" scope="col">SCORE</th>
+</tr>
+</thead>
+<!-- Skeleton Body (11 High-density rows to prevent Layout Shift) -->
+<tbody class="divide-y divide-surface-container-high">
+<!-- Skeleton Row 1 -->
+<tr class="h-12 hover:bg-surface-container-low/40 transition-colors">
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-24"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-28"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-14"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-52"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded-full h-6 w-16"></div></td>
+<td class="px-space-md py-3">
+<div class="flex items-center gap-2">
+<div class="animate-pulse bg-surface-container-highest rounded h-4 w-8"></div>
+<div class="animate-pulse bg-surface-container-highest rounded-full h-2 w-14"></div>
+</div>
+</td>
+</tr>
+<!-- Skeleton Row 2 -->
+<tr class="h-12 hover:bg-surface-container-low/40 transition-colors">
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-20"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-24"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-16"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-48"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded-full h-6 w-16"></div></td>
+<td class="px-space-md py-3">
+<div class="flex items-center gap-2">
+<div class="animate-pulse bg-surface-container-highest rounded h-4 w-10"></div>
+<div class="animate-pulse bg-surface-container-highest rounded-full h-2 w-16"></div>
+</div>
+</td>
+</tr>
+<!-- Skeleton Row 3 -->
+<tr class="h-12 hover:bg-surface-container-low/40 transition-colors">
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-24"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-28"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-12"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-44"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded-full h-6 w-16"></div></td>
+<td class="px-space-md py-3">
+<div class="flex items-center gap-2">
+<div class="animate-pulse bg-surface-container-highest rounded h-4 w-7"></div>
+<div class="animate-pulse bg-surface-container-highest rounded-full h-2 w-12"></div>
+</div>
+</td>
+</tr>
+<!-- Skeleton Row 4 -->
+<tr class="h-12 hover:bg-surface-container-low/40 transition-colors">
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-22"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-24"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-14"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-52"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded-full h-6 w-16"></div></td>
+<td class="px-space-md py-3">
+<div class="flex items-center gap-2">
+<div class="animate-pulse bg-surface-container-highest rounded h-4 w-9"></div>
+<div class="animate-pulse bg-surface-container-highest rounded-full h-2 w-16"></div>
+</div>
+</td>
+</tr>
+<!-- Skeleton Row 5 -->
+<tr class="h-12 hover:bg-surface-container-low/40 transition-colors">
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-20"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-28"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-16"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-48"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded-full h-6 w-16"></div></td>
+<td class="px-space-md py-3">
+<div class="flex items-center gap-2">
+<div class="animate-pulse bg-surface-container-highest rounded h-4 w-8"></div>
+<div class="animate-pulse bg-surface-container-highest rounded-full h-2 w-14"></div>
+</div>
+</td>
+</tr>
+<!-- Skeleton Row 6 -->
+<tr class="h-12 hover:bg-surface-container-low/40 transition-colors">
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-24"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-24"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-12"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-44"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded-full h-6 w-16"></div></td>
+<td class="px-space-md py-3">
+<div class="flex items-center gap-2">
+<div class="animate-pulse bg-surface-container-highest rounded h-4 w-10"></div>
+<div class="animate-pulse bg-surface-container-highest rounded-full h-2 w-16"></div>
+</div>
+</td>
+</tr>
+<!-- Skeleton Row 7 -->
+<tr class="h-12 hover:bg-surface-container-low/40 transition-colors">
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-20"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-28"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-14"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-52"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded-full h-6 w-16"></div></td>
+<td class="px-space-md py-3">
+<div class="flex items-center gap-2">
+<div class="animate-pulse bg-surface-container-highest rounded h-4 w-7"></div>
+<div class="animate-pulse bg-surface-container-highest rounded-full h-2 w-12"></div>
+</div>
+</td>
+</tr>
+<!-- Skeleton Row 8 -->
+<tr class="h-12 hover:bg-surface-container-low/40 transition-colors">
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-24"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-24"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-16"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-48"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded-full h-6 w-16"></div></td>
+<td class="px-space-md py-3">
+<div class="flex items-center gap-2">
+<div class="animate-pulse bg-surface-container-highest rounded h-4 w-9"></div>
+<div class="animate-pulse bg-surface-container-highest rounded-full h-2 w-16"></div>
+</div>
+</td>
+</tr>
+<!-- Skeleton Row 9 -->
+<tr class="h-12 hover:bg-surface-container-low/40 transition-colors">
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-22"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-28"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-12"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-44"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded-full h-6 w-16"></div></td>
+<td class="px-space-md py-3">
+<div class="flex items-center gap-2">
+<div class="animate-pulse bg-surface-container-highest rounded h-4 w-8"></div>
+<div class="animate-pulse bg-surface-container-highest rounded-full h-2 w-14"></div>
+</div>
+</td>
+</tr>
+<!-- Skeleton Row 10 -->
+<tr class="h-12 hover:bg-surface-container-low/40 transition-colors">
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-20"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-24"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-14"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-52"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded-full h-6 w-16"></div></td>
+<td class="px-space-md py-3">
+<div class="flex items-center gap-2">
+<div class="animate-pulse bg-surface-container-highest rounded h-4 w-10"></div>
+<div class="animate-pulse bg-surface-container-highest rounded-full h-2 w-16"></div>
+</div>
+</td>
+</tr>
+<!-- Skeleton Row 11 -->
+<tr class="h-12 hover:bg-surface-container-low/40 transition-colors">
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-24"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-28"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-16"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded h-4 w-48"></div></td>
+<td class="px-space-md py-3"><div class="animate-pulse bg-surface-container-highest rounded-full h-6 w-16"></div></td>
+<td class="px-space-md py-3">
+<div class="flex items-center gap-2">
+<div class="animate-pulse bg-surface-container-highest rounded h-4 w-7"></div>
+<div class="animate-pulse bg-surface-container-highest rounded-full h-2 w-12"></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination in Disabled State -->
+<div class="border-t border-outline-variant px-space-md py-3 bg-surface-container-lowest flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="inline-block w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="text-on-surface-variant font-medium">Carregando transações do ledger...</span>
+</div>
+<div class="flex items-center gap-2 opacity-50">
+<button class="px-3 py-1.5 rounded-lg border border-outline-variant bg-surface-container text-outline text-label-md font-label-md cursor-not-allowed" disabled="" type="button">
+            Anterior
+          </button>
+<span class="text-body-sm font-body-sm px-2 text-outline">Página 1 de --</span>
+<button class="px-3 py-1.5 rounded-lg border border-outline-variant bg-surface-container text-outline text-label-md font-label-md cursor-not-allowed" disabled="" type="button">
+            Próximo
+          </button>
+</div>
+</div>
+</div>
+<!-- Operational Status Bar Footer -->
+<footer class="mt-auto pt-2 pb-space-md flex flex-col sm:flex-row items-center justify-between gap-space-sm border-t border-outline-variant/60 text-body-sm font-body-sm text-on-surface-variant">
+<div class="flex items-center gap-space-sm">
+<span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span>
+</span>
+<span>Motor de regras PIXPROTECT operacional</span>
+</div>
+<div class="flex items-center gap-4 text-label-sm font-label-sm">
+<span>Latência média de análise: <strong class="text-on-surface font-semibold font-code-mono">14ms</strong></span>
+<span class="text-outline-variant">|</span>
+<span>Heurísticas em cache: <strong class="text-on-surface font-semibold">100%</strong></span>
+</div>
+</footer>
+</main>
+</body></html>

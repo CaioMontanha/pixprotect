@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PIXPROTECT - Transações</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-container": "#007d55",
+            "tertiary-fixed": "#6ffbbe",
+            "surface-container-highest": "#dce2f3",
+            "surface-container-high": "#e2e8f8",
+            "inverse-on-surface": "#ebf1ff",
+            "secondary-fixed": "#dce2f7",
+            "background": "#f9f9ff",
+            "surface-variant": "#dce2f3",
+            "on-secondary-fixed-variant": "#404758",
+            "primary-container": "#2563eb",
+            "surface-container-low": "#f0f3ff",
+            "on-background": "#151c27",
+            "outline": "#737686",
+            "inverse-primary": "#b4c5ff",
+            "surface-tint": "#0053db",
+            "secondary-fixed-dim": "#c0c6db",
+            "on-tertiary-fixed-variant": "#005236",
+            "primary-fixed": "#dbe1ff",
+            "surface-bright": "#f9f9ff",
+            "surface-dim": "#d3daea",
+            "on-surface": "#151c27",
+            "surface": "#f9f9ff",
+            "outline-variant": "#c3c6d7",
+            "secondary-container": "#d9dff5",
+            "on-primary-fixed-variant": "#003ea8",
+            "surface-container-lowest": "#ffffff",
+            "error": "#ba1a1a",
+            "on-error-container": "#93000a",
+            "inverse-surface": "#2a313d",
+            "on-secondary": "#ffffff",
+            "primary-fixed-dim": "#b4c5ff",
+            "on-secondary-fixed": "#141b2b",
+            "on-primary-fixed": "#00174b",
+            "on-secondary-container": "#5c6274",
+            "on-primary-container": "#eeefff",
+            "on-surface-variant": "#434655",
+            "on-tertiary-container": "#bdffdb",
+            "on-error": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "error-container": "#ffdad6",
+            "tertiary-fixed-dim": "#4edea3",
+            "on-primary": "#ffffff",
+            "surface-container": "#e7eefe",
+            "secondary": "#575e70",
+            "primary": "#004ac6",
+            "on-tertiary-fixed": "#002113",
+            "tertiary": "#006242"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "gutter": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-xl": "2rem",
+            "margin-mobile": "1rem",
+            "gutter-mobile": "1rem",
+            "margin": "1.5rem"
+          },
+          "fontFamily": {
+            "headline-lg-mobile": ["Inter"],
+            "body-sm": ["Inter"],
+            "headline-xl-mobile": ["Inter"],
+            "body-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-xl": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-lg": ["Inter"],
+            "code-mono": ["Inter"],
+            "headline-md": ["Inter"]
+          },
+          "fontSize": {
+            "headline-lg-mobile": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-xl-mobile": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0em", "fontWeight": "500" }],
+            "headline-xl": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.025em", "fontWeight": "700" }],
+            "label-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-lg": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "code-mono": ["0.8125rem", { "lineHeight": "1.125rem", "letterSpacing": "0em", "fontWeight": "500" }],
+            "headline-md": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      background-color: #F7F8FA;
+      font-family: 'Inter', sans-serif;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      font-size: 18px;
+      line-height: 1;
+    }
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+</head>
+<body class="bg-[#F7F8FA] text-on-surface antialiased min-h-screen flex">
+<!-- SIDEBAR LATERAL -->
+<aside class="fixed top-0 left-0 h-screen w-64 flex flex-col justify-between bg-surface-container-lowest border-r border-[#E5E7EB] z-30 select-none shadow-sm">
+<div class="flex flex-col">
+<!-- Logo Header -->
+<div class="h-16 px-space-lg flex items-center justify-between border-b border-[#E5E7EB]">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-lg bg-primary-container text-white flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="shield">shield</span>
+</div>
+<div>
+<div class="font-headline-md text-headline-md tracking-tight font-bold text-[#111827] leading-tight">PIXPROTECT</div>
+<div class="font-body-sm text-body-sm text-secondary">Prevenção a Fraudes</div>
+</div>
+</div>
+<span class="font-label-sm text-body-sm px-1.5 py-0.5 rounded border border-[#E5E7EB] bg-[#F9FAFB] text-secondary">v1.0</span>
+</div>
+<!-- Navigation Links -->
+<nav class="p-space-md flex flex-col gap-1">
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-secondary font-label-md text-label-md hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg bg-surface-container-low text-primary-container font-label-md text-label-md relative font-medium" href="#">
+<span class="absolute left-0 top-1.5 bottom-1.5 w-1 bg-primary-container rounded-r"></span>
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span>Transações</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-secondary font-label-md text-label-md hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+<span>Regras de Risco</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-secondary font-label-md text-label-md hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="block">block</span>
+<span>Lista de Bloqueio</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-secondary font-label-md text-label-md hover:bg-surface-container-low hover:text-on-surface transition-colors duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Configurações</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer -->
+<div class="p-space-md border-t border-[#E5E7EB] bg-surface-container-lowest">
+<div class="flex items-center justify-between mb-3 px-1">
+<div class="flex items-center gap-2">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+</span>
+<span class="font-label-sm text-body-sm text-secondary">Motor Operacional</span>
+</div>
+<span class="font-label-sm text-body-sm text-[#065F46] bg-[#ECFDF5] px-1.5 py-0.5 rounded border border-[#A7F3D0]">99.98%</span>
+</div>
+<div class="flex items-center gap-2.5 p-2 rounded-lg bg-[#F9FAFB] border border-[#E5E7EB]">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center font-label-md text-label-md text-[#111827]">
+          AL
+        </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-md text-body-sm text-[#111827] truncate font-medium">Analista de Risco</span>
+<span class="font-body-sm text-body-sm text-secondary truncate">analista@pixprotect.io</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- ÁREA DE CONTEÚDO PRINCIPAL -->
+<main class="ml-64 flex-1 min-h-screen flex flex-col">
+<!-- Top Bar Interna de Alinhamento -->
+<header class="sticky top-0 z-20 h-16 bg-surface-container-lowest border-b border-[#E5E7EB] px-space-lg flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-3">
+<div class="font-headline-md text-headline-md text-primary-container font-bold">PIXPROTECT</div>
+<span class="text-[#D1D5DB]">/</span>
+<span class="font-label-md text-label-md text-[#111827]">Monitoramento em Tempo Real</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="h-9 px-3 rounded-lg border border-[#E5E7EB] bg-surface-container-lowest text-on-surface font-label-md text-label-md flex items-center gap-1.5 hover:bg-[#F9FAFB] transition-colors">
+<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+<span>Sincronizar</span>
+</button>
+<button class="h-9 px-3 rounded-lg border border-[#E5E7EB] bg-surface-container-lowest text-on-surface font-label-md text-label-md flex items-center gap-1.5 hover:bg-[#F9FAFB] transition-colors">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+<span>Exportar Relatório</span>
+</button>
+</div>
+</header>
+<div class="p-space-lg flex-1 flex flex-col gap-space-lg max-w-[1400px] w-full mx-auto">
+<!-- Cabeçalho de Página e View Switcher (Demonstração de Estados) -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2">
+<div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-[#111827]">Transações</h1>
+<p class="font-body-md text-body-md text-secondary mt-0.5">Transações PIX analisadas em tempo real pelo motor de risco.</p>
+</div>
+<!-- Seletor de Estados / Interactive Tester -->
+<div class="flex items-center gap-1 p-1 bg-surface-container-lowest border border-[#E5E7EB] rounded-lg shadow-sm">
+<span class="font-label-sm text-body-sm text-secondary px-2">Estado:</span>
+<button class="px-2.5 py-1 rounded text-body-sm font-label-md transition-colors bg-primary-container text-white" id="btn-state-normal" onclick="switchState('normal')">
+            Dados Normais (20)
+          </button>
+<button class="px-2.5 py-1 rounded text-body-sm font-label-md transition-colors text-secondary hover:text-[#111827]" id="btn-state-skeleton" onclick="switchState('skeleton')">
+            Carregando (Skeleton)
+          </button>
+<button class="px-2.5 py-1 rounded text-body-sm font-label-md transition-colors text-secondary hover:text-[#111827]" id="btn-state-empty" onclick="switchState('empty')">
+            Estado Vazio
+          </button>
+<button class="px-2.5 py-1 rounded text-body-sm font-label-md transition-colors text-secondary hover:text-[#111827]" id="btn-state-error" onclick="switchState('error')">
+            Erro da API
+          </button>
+</div>
+</div>
+<!-- Barra de Filtros Horizontais & Busca -->
+<div class="bg-surface-container-lowest rounded-lg border border-[#E5E7EB] p-3 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3">
+<!-- Chips de Risco -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 md:pb-0" id="risk-filter-chips">
+<button class="risk-chip active inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-body-sm font-label-md bg-primary-container text-white transition-all" onclick="filterRisk('all', this)">
+<span>Todos</span>
+<span class="bg-white/20 px-1.5 py-0.2 rounded-full text-[11px]">247</span>
+</button>
+<button class="risk-chip inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-body-sm font-label-md bg-white border border-[#E5E7EB] text-[#111827] hover:border-[#A7F3D0] transition-all" onclick="filterRisk('Baixo', this)">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span>Baixo</span>
+<span class="text-secondary text-[11px]">182</span>
+</button>
+<button class="risk-chip inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-body-sm font-label-md bg-white border border-[#E5E7EB] text-[#111827] hover:border-[#FDE68A] transition-all" onclick="filterRisk('Médio', this)">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+<span>Médio</span>
+<span class="text-secondary text-[11px]">43</span>
+</button>
+<button class="risk-chip inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-body-sm font-label-md bg-white border border-[#E5E7EB] text-[#111827] hover:border-[#FECACA] transition-all" onclick="filterRisk('Alto', this)">
+<span class="w-2 h-2 rounded-full bg-red-500"></span>
+<span>Alto</span>
+<span class="text-secondary text-[11px]">22</span>
+</button>
+</div>
+<!-- Busca e Contador Total -->
+<div class="flex items-center gap-3">
+<div class="relative w-full md:w-72">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-secondary text-[18px]" data-icon="search">search</span>
+<input class="w-full h-[38px] pl-9 pr-3 rounded-lg border border-[#E5E7EB] bg-surface-container-lowest text-body-md text-[#111827] placeholder:text-[#9CA3AF] focus:border-primary-container focus:ring-2 focus:ring-primary-container/15 transition-all text-sm outline-none" id="search-input" oninput="handleSearch(this.value)" placeholder="Buscar transação..." type="text"/>
+</div>
+<div class="hidden lg:flex items-center gap-1 text-body-sm text-secondary border-l border-[#E5E7EB] pl-3 whitespace-nowrap">
+<span class="font-medium text-[#111827]">247</span> transações registradas
+          </div>
+</div>
+</div>
+<!-- Container Principal da Tabela de Transações -->
+<div class="bg-surface-container-lowest border border-[#E5E7EB] rounded-lg shadow-sm flex flex-col overflow-hidden">
+<!-- Table Scroller -->
+<div class="overflow-x-auto min-h-[440px]">
+<table class="w-full text-left border-collapse" id="transactions-table">
+<thead>
+<tr class="bg-[#F9FAFB] border-b border-[#E5E7EB]">
+<th class="py-3 px-4 font-label-sm text-label-sm text-secondary uppercase tracking-wider">Código</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-secondary uppercase tracking-wider">Valor</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-secondary uppercase tracking-wider">Horário</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-secondary uppercase tracking-wider">Origem → Destino</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-secondary uppercase tracking-wider">Risco</th>
+<th class="py-3 px-4 font-label-sm text-label-sm text-secondary uppercase tracking-wider">Score</th>
+</tr>
+</thead>
+<!-- 1. ESTADO NORMAL (POPULADO COM 20 TRANSAÇÕES REALISTAS) -->
+<tbody class="divide-y divide-[#F3F4F6]" id="state-normal-rows">
+<!-- Linha 1 -->
+<tr class="hover:bg-[#F9FAFB] cursor-pointer transition-colors duration-150 transaction-row" data-code="83921" data-risk="Alto" data-route="Recife - PE → São Paulo - SP">
+<td class="py-3 px-4 font-code-mono text-code-mono font-medium text-[#111827]">PIX #83921</td>
+<td class="py-3 px-4 font-label-md text-label-md text-[#111827] tabular-nums font-semibold">R$ 12.300,50</td>
+<td class="py-3 px-4 font-body-md text-body-md text-secondary tabular-nums">03:17</td>
+<td class="py-3 px-4 font-body-md text-body-md text-[#111827]">Recife - PE → São Paulo - SP</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#FEF2F2] text-[#991B1B] border border-[#FECACA]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#991B1B]"></span>
+                    Alto
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="font-code-mono text-code-mono text-secondary tabular-nums font-medium">94/100</span>
+<div class="w-16 h-1.5 rounded-full bg-[#F3F4F6] overflow-hidden">
+<div class="h-full bg-red-500 rounded-full" style="width: 94%;"></div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Linha 2 -->
+<tr class="hover:bg-[#F9FAFB] cursor-pointer transition-colors duration-150 transaction-row" data-code="83922" data-risk="Baixo" data-route="Curitiba - PR → Rio de Janeiro - RJ">
+<td class="py-3 px-4 font-code-mono text-code-mono font-medium text-[#111827]">PIX #83922</td>
+<td class="py-3 px-4 font-label-md text-label-md text-[#111827] tabular-nums font-semibold">R$ 150,00</td>
+<td class="py-3 px-4 font-body-md text-body-md text-secondary tabular-nums">08:42</td>
+<td class="py-3 px-4 font-body-md text-body-md text-[#111827]">Curitiba - PR → Rio de Janeiro - RJ</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#ECFDF5] text-[#065F46] border border-[#A7F3D0]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#065F46]"></span>
+                    Baixo
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="font-code-mono text-code-mono text-secondary tabular-nums font-medium">12/100</span>
+<div class="w-16 h-1.5 rounded-full bg-[#F3F4F6] overflow-hidden">
+<div class="h-full bg-emerald-500 rounded-full" style="width: 12%;"></div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Linha 3 -->
+<tr class="hover:bg-[#F9FAFB] cursor-pointer transition-colors duration-150 transaction-row" data-code="83923" data-risk="Médio" data-route="Belo Horizonte - MG → Salvador - BA">
+<td class="py-3 px-4 font-code-mono text-code-mono font-medium text-[#111827]">PIX #83923</td>
+<td class="py-3 px-4 font-label-md text-label-md text-[#111827] tabular-nums font-semibold">R$ 4.850,00</td>
+<td class="py-3 px-4 font-body-md text-body-md text-secondary tabular-nums">09:15</td>
+<td class="py-3 px-4 font-body-md text-body-md text-[#111827]">Belo Horizonte - MG → Salvador - BA</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#FFFBEB] text-[#92400E] border border-[#FDE68A]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#92400E]"></span>
+                    Médio
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="font-code-mono text-code-mono text-secondary tabular-nums font-medium">68/100</span>
+<div class="w-16 h-1.5 rounded-full bg-[#F3F4F6] overflow-hidden">
+<div class="h-full bg-amber-500 rounded-full" style="width: 68%;"></div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Linha 4 -->
+<tr class="hover:bg-[#F9FAFB] cursor-pointer transition-colors duration-150 transaction-row" data-code="83924" data-risk="Baixo" data-route="Fortaleza - CE → Porto Alegre - RS">
+<td class="py-3 px-4 font-code-mono text-code-mono font-medium text-[#111827]">PIX #83924</td>
+<td class="py-3 px-4 font-label-md text-label-md text-[#111827] tabular-nums font-semibold">R$ 820,00</td>
+<td class="py-3 px-4 font-body-md text-body-md text-secondary tabular-nums">10:04</td>
+<td class="py-3 px-4 font-body-md text-body-md text-[#111827]">Fortaleza - CE → Porto Alegre - RS</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#ECFDF5] text-[#065F46] border border-[#A7F3D0]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#065F46]"></span>
+                    Baixo
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="font-code-mono text-code-mono text-secondary tabular-nums font-medium">18/100</span>
+<div class="w-16 h-1.5 rounded-full bg-[#F3F4F6] overflow-hidden">
+<div class="h-full bg-emerald-500 rounded-full" style="width: 18%;"></div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Linha 5 -->
+<tr class="hover:bg-[#F9FAFB] cursor-pointer transition-colors duration-150 transaction-row" data-code="83925" data-risk="Alto" data-route="Brasília - DF → Campinas - SP">
+<td class="py-3 px-4 font-code-mono text-code-mono font-medium text-[#111827]">PIX #83925</td>
+<td class="py-3 px-4 font-label-md text-label-md text-[#111827] tabular-nums font-semibold">R$ 9.750,00</td>
+<td class="py-3 px-4 font-body-md text-body-md text-secondary tabular-nums">10:22</td>
+<td class="py-3 px-4 font-body-md text-body-md text-[#111827]">Brasília - DF → Campinas - SP</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#FEF2F2] text-[#991B1B] border border-[#FECACA]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#991B1B]"></span>
+                    Alto
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="font-code-mono text-code-mono text-secondary tabular-nums font-medium">88/100</span>
+<div class="w-16 h-1.5 rounded-full bg-[#F3F4F6] overflow-hidden">
+<div class="h-full bg-red-500 rounded-full" style="width: 88%;"></div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Linha 6 -->
+<tr class="hover:bg-[#F9FAFB] cursor-pointer transition-colors duration-150 transaction-row" data-code="83926" data-risk="Baixo" data-route="São Paulo - SP → Santos - SP">
+<td class="py-3 px-4 font-code-mono text-code-mono font-medium text-[#111827]">PIX #83926</td>
+<td class="py-3 px-4 font-label-md text-label-md text-[#111827] tabular-nums font-semibold">R$ 45,90</td>
+<td class="py-3 px-4 font-body-md text-body-md text-secondary tabular-nums">11:13</td>
+<td class="py-3 px-4 font-body-md text-body-md text-[#111827]">São Paulo - SP → Santos - SP</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#ECFDF5] text-[#065F46] border border-[#A7F3D0]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#065F46]"></span>
+                    Baixo
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="font-code-mono text-code-mono text-secondary tabular-nums font-medium">08/100</span>
+<div class="w-16 h-1.5 rounded-full bg-[#F3F4F6] overflow-hidden">
+<div class="h-full bg-emerald-500 rounded-full" style="width: 8%;"></div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Linha 7 -->
+<tr class="hover:bg-[#F9FAFB] cursor-pointer transition-colors duration-150 transaction-row" data-code="83927" data-risk="Médio" data-route="Goiânia - GO → Manaus - AM">
+<td class="py-3 px-4 font-code-mono text-code-mono font-medium text-[#111827]">PIX #83927</td>
+<td class="py-3 px-4 font-label-md text-label-md text-[#111827] tabular-nums font-semibold">R$ 3.200,00</td>
+<td class="py-3 px-4 font-body-md text-body-md text-secondary tabular-nums">11:45</td>
+<td class="py-3 px-4 font-body-md text-body-md text-[#111827]">Goiânia - GO → Manaus - AM</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#FFFBEB] text-[#92400E] border border-[#FDE68A]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#92400E]"></span>
+                    Médio
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="font-code-mono text-code-mono text-secondary tabular-nums font-medium">55/100</span>
+<div class="w-16 h-1.5 rounded-full bg-[#F3F4F6] overflow-hidden">
+<div class="h-full bg-amber-500 rounded-full" style="width: 55%;"></div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Linha 8 -->
+<tr class="hover:bg-[#F9FAFB] cursor-pointer transition-colors duration-150 transaction-row" data-code="83928" data-risk="Baixo" data-route="Florianópolis - SC → Curitiba - PR">
+<td class="py-3 px-4 font-code-mono text-code-mono font-medium text-[#111827]">PIX #83928</td>
+<td class="py-3 px-4 font-label-md text-label-md text-[#111827] tabular-nums font-semibold">R$ 290,00</td>
+<td class="py-3 px-4 font-body-md text-body-md text-secondary tabular-nums">12:30</td>
+<td class="py-3 px-4 font-body-md text-body-md text-[#111827]">Florianópolis - SC → Curitiba - PR</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#ECFDF5] text-[#065F46] border border-[#A7F3D0]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#065F46]"></span>
+                    Baixo
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="font-code-mono text-code-mono text-secondary tabular-nums font-medium">15/100</span>
+<div class="w-16 h-1.5 rounded-full bg-[#F3F4F6] overflow-hidden">
+<div class="h-full bg-emerald-500 rounded-full" style="width: 15%;"></div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Linha 9 -->
+<tr class="hover:bg-[#F9FAFB] cursor-pointer transition-colors duration-150 transaction-row" data-code="83929" data-risk="Alto" data-route="São Luís - MA → Belém - PA">
+<td class="py-3 px-4 font-code-mono text-code-mono font-medium text-[#111827]">PIX #83929</td>
+<td class="py-3 px-4 font-label-md text-label-md text-[#111827] tabular-nums font-semibold">R$ 15.420,00</td>
+<td class="py-3 px-4 font-body-md text-body-md text-secondary tabular-nums">13:19</td>
+<td class="py-3 px-4 font-body-md text-body-md text-[#111827]">São Luís - MA → Belém - PA</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#FEF2F2] text-[#991B1B] border border-[#FECACA]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#991B1B]"></span>
+                    Alto
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="font-code-mono text-code-mono text-secondary tabular-nums font-medium">96/100</span>
+<div class="w-16 h-1.5 rounded-full bg-[#F3F4F6] overflow-hidden">
+<div class="h-full bg-red-500 rounded-full" style="width: 96%;"></div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Linha 10 -->
+<tr class="hover:bg-[#F9FAFB] cursor-pointer transition-colors duration-150 transaction-row" data-code="83930" data-risk="Baixo" data-route="Vitória - ES → Belo Horizonte - MG">
+<td class="py-3 px-4 font-code-mono text-code-mono font-medium text-[#111827]">PIX #83930</td>
+<td class="py-3 px-4 font-label-md text-label-md text-[#111827] tabular-nums font-semibold">R$ 510,00</td>
+<td class="py-3 px-4 font-body-md text-body-md text-secondary tabular-nums">14:02</td>
+<td class="py-3 px-4 font-body-md text-body-md text-[#111827]">Vitória - ES → Belo Horizonte - MG</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#ECFDF5] text-[#065F46] border border-[#A7F3D0]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#065F46]"></span>
+                    Baixo
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="font-code-mono text-code-mono text-secondary tabular-nums font-medium">21/100</span>
+<div class="w-16 h-1.5 rounded-full bg-[#F3F4F6] overflow-hidden">
+<div class="h-full bg-emerald-500 rounded-full" style="width: 21%;"></div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Linha 11 -->
+<tr class="hover:bg-[#F9FAFB] cursor-pointer transition-colors duration-150 transaction-row" data-code="83931" data-risk="Médio" data-route="Natal - RN → Fortaleza - CE">
+<td class="py-3 px-4 font-code-mono text-code-mono font-medium text-[#111827]">PIX #83931</td>
+<td class="py-3 px-4 font-label-md text-label-md text-[#111827] tabular-nums font-semibold">R$ 2.450,00</td>
+<td class="py-3 px-4 font-body-md text-body-md text-secondary tabular-nums">14:22</td>
+<td class="py-3 px-4 font-body-md text-body-md text-[#111827]">Natal - RN → Fortaleza - CE</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#FFFBEB] text-[#92400E] border border-[#FDE68A]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#92400E]"></span>
+                    Médio
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="font-code-mono text-code-mono text-secondary tabular-nums font-medium">62/100</span>
+<div class="w-16 h-1.5 rounded-full bg-[#F3F4F6] overflow-hidden">
+<div class="h-full bg-amber-500 rounded-full" style="width: 62%;"></div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Linha 12 -->
+<tr class="hover:bg-[#F9FAFB] cursor-pointer transition-colors duration-150 transaction-row" data-code="83932" data-risk="Baixo" data-route="Cuiabá - MT → Campo Grande - MS">
+<td class="py-3 px-4 font-code-mono text-code-mono font-medium text-[#111827]">PIX #83932</td>
+<td class="py-3 px-4 font-label-md text-label-md text-[#111827] tabular-nums font-semibold">R$ 95,00</td>
+<td class="py-3 px-4 font-body-md text-body-md text-secondary tabular-nums">15:10</td>
+<td class="py-3 px-4 font-body-md text-body-md text-[#111827]">Cuiabá - MT → Campo Grande - MS</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#ECFDF5] text-[#065F46] border border-[#A7F3D0]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#065F46]"></span>
+                    Baixo
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="font-code-mono text-code-mono text-secondary tabular-nums font-medium">10/100</span>
+<div class="w-16 h-1.5 rounded-full bg-[#F3F4F6] overflow-hidden">
+<div class="h-full bg-emerald-500 rounded-full" style="width: 10%;"></div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Linha 13 -->
+<tr class="hover:bg-[#F9FAFB] cursor-pointer transition-colors duration-150 transaction-row" data-code="83933" data-risk="Médio" data-route="Maceió - AL → Recife - PE">
+<td class="py-3 px-4 font-code-mono text-code-mono font-medium text-[#111827]">PIX #83933</td>
+<td class="py-3 px-4 font-label-md text-label-md text-[#111827] tabular-nums font-semibold">R$ 3.800,00</td>
+<td class="py-3 px-4 font-body-md text-body-md text-secondary tabular-nums">16:05</td>
+<td class="py-3 px-4 font-body-md text-body-md text-[#111827]">Maceió - AL → Recife - PE</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#FFFBEB] text-[#92400E] border border-[#FDE68A]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#92400E]"></span>
+                    Médio
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="font-code-mono text-code-mono text-secondary tabular-nums font-medium">70/100</span>
+<div class="w-16 h-1.5 rounded-full bg-[#F3F4F6] overflow-hidden">
+<div class="h-full bg-amber-500 rounded-full" style="width: 70%;"></div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Linha 14 -->
+<tr class="hover:bg-[#F9FAFB] cursor-pointer transition-colors duration-150 transaction-row" data-code="83934" data-risk="Baixo" data-route="João Pessoa - PB → Natal - RN">
+<td class="py-3 px-4 font-code-mono text-code-mono font-medium text-[#111827]">PIX #83934</td>
+<td class="py-3 px-4 font-label-md text-label-md text-[#111827] tabular-nums font-semibold">R$ 320,00</td>
+<td class="py-3 px-4 font-body-md text-body-md text-secondary tabular-nums">16:48</td>
+<td class="py-3 px-4 font-body-md text-body-md text-[#111827]">João Pessoa - PB → Natal - RN</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#ECFDF5] text-[#065F46] border border-[#A7F3D0]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#065F46]"></span>
+                    Baixo
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="font-code-mono text-code-mono text-secondary tabular-nums font-medium">14/100</span>
+<div class="w-16 h-1.5 rounded-full bg-[#F3F4F6] overflow-hidden">
+<div class="h-full bg-emerald-500 rounded-full" style="width: 14%;"></div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Linha 15 -->
+<tr class="hover:bg-[#F9FAFB] cursor-pointer transition-colors duration-150 transaction-row" data-code="83935" data-risk="Alto" data-route="Teresina - PI → São Luís - MA">
+<td class="py-3 px-4 font-code-mono text-code-mono font-medium text-[#111827]">PIX #83935</td>
+<td class="py-3 px-4 font-label-md text-label-md text-[#111827] tabular-nums font-semibold">R$ 18.900,00</td>
+<td class="py-3 px-4 font-body-md text-body-md text-secondary tabular-nums">17:35</td>
+<td class="py-3 px-4 font-body-md text-body-md text-[#111827]">Teresina - PI → São Luís - MA</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#FEF2F2] text-[#991B1B] border border-[#FECACA]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#991B1B]"></span>
+                    Alto
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="font-code-mono text-code-mono text-secondary tabular-nums font-medium">92/100</span>
+<div class="w-16 h-1.5 rounded-full bg-[#F3F4F6] overflow-hidden">
+<div class="h-full bg-red-500 rounded-full" style="width: 92%;"></div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Linha 16 -->
+<tr class="hover:bg-[#F9FAFB] cursor-pointer transition-colors duration-150 transaction-row" data-code="83936" data-risk="Baixo" data-route="Aracaju - SE → Salvador - BA">
+<td class="py-3 px-4 font-code-mono text-code-mono font-medium text-[#111827]">PIX #83936</td>
+<td class="py-3 px-4 font-label-md text-label-md text-[#111827] tabular-nums font-semibold">R$ 175,00</td>
+<td class="py-3 px-4 font-body-md text-body-md text-secondary tabular-nums">18:15</td>
+<td class="py-3 px-4 font-body-md text-body-md text-[#111827]">Aracaju - SE → Salvador - BA</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#ECFDF5] text-[#065F46] border border-[#A7F3D0]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#065F46]"></span>
+                    Baixo
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="font-code-mono text-code-mono text-secondary tabular-nums font-medium">09/100</span>
+<div class="w-16 h-1.5 rounded-full bg-[#F3F4F6] overflow-hidden">
+<div class="h-full bg-emerald-500 rounded-full" style="width: 9%;"></div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Linha 17 -->
+<tr class="hover:bg-[#F9FAFB] cursor-pointer transition-colors duration-150 transaction-row" data-code="83937" data-risk="Médio" data-route="Ribeirão Preto - SP → São Paulo - SP">
+<td class="py-3 px-4 font-code-mono text-code-mono font-medium text-[#111827]">PIX #83937</td>
+<td class="py-3 px-4 font-label-md text-label-md text-[#111827] tabular-nums font-semibold">R$ 2.990,00</td>
+<td class="py-3 px-4 font-body-md text-body-md text-secondary tabular-nums">19:05</td>
+<td class="py-3 px-4 font-body-md text-body-md text-[#111827]">Ribeirão Preto - SP → São Paulo - SP</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#FFFBEB] text-[#92400E] border border-[#FDE68A]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#92400E]"></span>
+                    Médio
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="font-code-mono text-code-mono text-secondary tabular-nums font-medium">58/100</span>
+<div class="w-16 h-1.5 rounded-full bg-[#F3F4F6] overflow-hidden">
+<div class="h-full bg-amber-500 rounded-full" style="width: 58%;"></div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Linha 18 -->
+<tr class="hover:bg-[#F9FAFB] cursor-pointer transition-colors duration-150 transaction-row" data-code="83938" data-risk="Baixo" data-route="Londrina - PR → Maringá - PR">
+<td class="py-3 px-4 font-code-mono text-code-mono font-medium text-[#111827]">PIX #83938</td>
+<td class="py-3 px-4 font-label-md text-label-md text-[#111827] tabular-nums font-semibold">R$ 80,00</td>
+<td class="py-3 px-4 font-body-md text-body-md text-secondary tabular-nums">20:44</td>
+<td class="py-3 px-4 font-body-md text-body-md text-[#111827]">Londrina - PR → Maringá - PR</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#ECFDF5] text-[#065F46] border border-[#A7F3D0]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#065F46]"></span>
+                    Baixo
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="font-code-mono text-code-mono text-secondary tabular-nums font-medium">05/100</span>
+<div class="w-16 h-1.5 rounded-full bg-[#F3F4F6] overflow-hidden">
+<div class="h-full bg-emerald-500 rounded-full" style="width: 5%;"></div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Linha 19 -->
+<tr class="hover:bg-[#F9FAFB] cursor-pointer transition-colors duration-150 transaction-row" data-code="83939" data-risk="Baixo" data-route="Joinville - SC → Blumenau - SC">
+<td class="py-3 px-4 font-code-mono text-code-mono font-medium text-[#111827]">PIX #83939</td>
+<td class="py-3 px-4 font-label-md text-label-md text-[#111827] tabular-nums font-semibold">R$ 640,00</td>
+<td class="py-3 px-4 font-body-md text-body-md text-secondary tabular-nums">22:18</td>
+<td class="py-3 px-4 font-body-md text-body-md text-[#111827]">Joinville - SC → Blumenau - SC</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#ECFDF5] text-[#065F46] border border-[#A7F3D0]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#065F46]"></span>
+                    Baixo
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="font-code-mono text-code-mono text-secondary tabular-nums font-medium">16/100</span>
+<div class="w-16 h-1.5 rounded-full bg-[#F3F4F6] overflow-hidden">
+<div class="h-full bg-emerald-500 rounded-full" style="width: 16%;"></div>
+</div>
+</div>
+</td>
+</tr>
+<!-- Linha 20 -->
+<tr class="hover:bg-[#F9FAFB] cursor-pointer transition-colors duration-150 transaction-row" data-code="83940" data-risk="Alto" data-route="Sorocaba - SP → Osasco - SP">
+<td class="py-3 px-4 font-code-mono text-code-mono font-medium text-[#111827]">PIX #83940</td>
+<td class="py-3 px-4 font-label-md text-label-md text-[#111827] tabular-nums font-semibold">R$ 7.600,00</td>
+<td class="py-3 px-4 font-body-md text-body-md text-secondary tabular-nums">23:41</td>
+<td class="py-3 px-4 font-body-md text-body-md text-[#111827]">Sorocaba - SP → Osasco - SP</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-label-sm font-label-sm bg-[#FEF2F2] text-[#991B1B] border border-[#FECACA]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#991B1B]"></span>
+                    Alto
+                  </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<span class="font-code-mono text-code-mono text-secondary tabular-nums font-medium">91/100</span>
+<div class="w-16 h-1.5 rounded-full bg-[#F3F4F6] overflow-hidden">
+<div class="h-full bg-red-500 rounded-full" style="width: 91%;"></div>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+<!-- 2. ESTADO SKELETON LOADING (OCULTO INICIALMENTE) -->
+<tbody class="divide-y divide-[#F3F4F6] hidden" id="state-skeleton-rows">
+<!-- 7 Linhas de Skeletons precisos -->
+<tr class="animate-pulse">
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-20"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-24"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-12"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-52"></div></td>
+<td class="py-4 px-4"><div class="h-5 bg-[#E5E7EB] rounded w-16"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-24"></div></td>
+</tr>
+<tr class="animate-pulse">
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-20"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-28"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-12"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-48"></div></td>
+<td class="py-4 px-4"><div class="h-5 bg-[#E5E7EB] rounded w-16"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-24"></div></td>
+</tr>
+<tr class="animate-pulse">
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-20"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-20"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-12"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-56"></div></td>
+<td class="py-4 px-4"><div class="h-5 bg-[#E5E7EB] rounded w-16"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-24"></div></td>
+</tr>
+<tr class="animate-pulse">
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-20"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-24"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-12"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-44"></div></td>
+<td class="py-4 px-4"><div class="h-5 bg-[#E5E7EB] rounded w-16"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-24"></div></td>
+</tr>
+<tr class="animate-pulse">
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-20"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-32"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-12"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-60"></div></td>
+<td class="py-4 px-4"><div class="h-5 bg-[#E5E7EB] rounded w-16"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-24"></div></td>
+</tr>
+<tr class="animate-pulse">
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-20"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-20"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-12"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-52"></div></td>
+<td class="py-4 px-4"><div class="h-5 bg-[#E5E7EB] rounded w-16"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-24"></div></td>
+</tr>
+<tr class="animate-pulse">
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-20"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-24"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-12"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-48"></div></td>
+<td class="py-4 px-4"><div class="h-5 bg-[#E5E7EB] rounded w-16"></div></td>
+<td class="py-4 px-4"><div class="h-4 bg-[#E5E7EB] rounded w-24"></div></td>
+</tr>
+</tbody>
+<!-- 3. ESTADO VAZIO (OCULTO INICIALMENTE) -->
+<tbody class="hidden" id="state-empty-rows">
+<tr>
+<td class="py-16 text-center" colspan="6">
+<div class="max-w-xs mx-auto flex flex-col items-center">
+<div class="w-12 h-12 rounded-full bg-[#F3F4F6] text-secondary flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-[24px]" data-icon="search_off">search_off</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-semibold text-[#111827] mb-1">Nenhuma transação encontrada</h3>
+<p class="font-body-md text-body-md text-secondary leading-normal">
+                      Não foram identificadas transações com os critérios e filtros selecionados.
+                    </p>
+</div>
+</td>
+</tr>
+</tbody>
+<!-- 4. ESTADO ERRO DA API (OCULTO INICIALMENTE) -->
+<tbody class="hidden" id="state-error-rows">
+<tr>
+<td class="py-16 text-center" colspan="6">
+<div class="max-w-sm mx-auto flex flex-col items-center">
+<div class="w-12 h-12 rounded-full bg-[#FEF2F2] text-[#DC2626] border border-[#FECACA] flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-[24px]" data-icon="error_outline">error_outline</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-semibold text-[#111827] mb-1">Erro ao carregar transações da API</h3>
+<p class="font-body-md text-body-md text-secondary leading-normal mb-5">
+                      Não foi possível comunicar com o serviço de análise de risco.
+                    </p>
+<button class="h-[38px] px-4 rounded-lg bg-primary-container text-white font-label-md text-label-md flex items-center gap-2 hover:bg-[#1D4ED8] transition-colors shadow-sm" onclick="switchState('normal')">
+<span class="material-symbols-outlined text-[18px]" data-icon="refresh">refresh</span>
+<span>Tentar novamente</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- 6. RODAPÉ DA TABELA (PAGINAÇÃO COMPLETA) -->
+<div class="py-3 px-4 bg-surface-container-lowest border-t border-[#E5E7EB] flex flex-col sm:flex-row items-center justify-between gap-3 text-sm" id="table-pagination-footer">
+<div class="text-secondary font-body-md text-body-md" id="pagination-info">
+            Mostrando <span class="font-medium text-[#111827]">1–20</span> de <span class="font-medium text-[#111827]">247</span> resultados
+          </div>
+<div class="flex items-center gap-1.5">
+<button class="h-8 px-2.5 rounded border border-[#E5E7EB] bg-white text-secondary font-label-md text-body-sm hover:bg-[#F9FAFB] hover:text-[#111827] disabled:opacity-50 transition-colors flex items-center gap-1" disabled="">
+<span class="material-symbols-outlined text-[16px]" data-icon="chevron_left">chevron_left</span>
+<span>Anterior</span>
+</button>
+<!-- Páginas -->
+<button class="w-8 h-8 rounded border border-primary-container bg-primary-container text-white font-label-md text-body-sm font-semibold">1</button>
+<button class="w-8 h-8 rounded border border-[#E5E7EB] bg-white text-[#111827] font-label-md text-body-sm hover:bg-[#F9FAFB] transition-colors">2</button>
+<button class="w-8 h-8 rounded border border-[#E5E7EB] bg-white text-[#111827] font-label-md text-body-sm hover:bg-[#F9FAFB] transition-colors">3</button>
+<span class="px-1 text-secondary font-body-md">...</span>
+<button class="w-8 h-8 rounded border border-[#E5E7EB] bg-white text-[#111827] font-label-md text-body-sm hover:bg-[#F9FAFB] transition-colors">13</button>
+<button class="h-8 px-2.5 rounded border border-[#E5E7EB] bg-white text-[#111827] font-label-md text-body-sm hover:bg-[#F9FAFB] transition-colors flex items-center gap-1">
+<span>Próximo</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- INTERATIVIDADE JS PURA (SWITCH DE ESTADOS E FILTRO DE CHIPS) -->
+<script>
+    let currentRiskFilter = 'all';
+
+    function switchState(stateName) {
+      const normalEl = document.getElementById('state-normal-rows');
+      const skeletonEl = document.getElementById('state-skeleton-rows');
+      const emptyEl = document.getElementById('state-empty-rows');
+      const errorEl = document.getElementById('state-error-rows');
+      const paginationFooter = document.getElementById('table-pagination-footer');
+
+      // Ocultar todos
+      normalEl.classList.add('hidden');
+      skeletonEl.classList.add('hidden');
+      emptyEl.classList.add('hidden');
+      errorEl.classList.add('hidden');
+
+      // Atualizar botões de abas no header
+      ['normal', 'skeleton', 'empty', 'error'].forEach(id => {
+        const btn = document.getElementById(`btn-state-${id}`);
+        if (id === stateName) {
+          btn.className = 'px-2.5 py-1 rounded text-body-sm font-label-md transition-colors bg-primary-container text-white';
+        } else {
+          btn.className = 'px-2.5 py-1 rounded text-body-sm font-label-md transition-colors text-secondary hover:text-[#111827]';
+        }
+      });
+
+      // Ativar o estado correspondente
+      if (stateName === 'normal') {
+        normalEl.classList.remove('hidden');
+        paginationFooter.classList.remove('hidden');
+      } else if (stateName === 'skeleton') {
+        skeletonEl.classList.remove('hidden');
+        paginationFooter.classList.add('hidden');
+      } else if (stateName === 'empty') {
+        emptyEl.classList.remove('hidden');
+        paginationFooter.classList.add('hidden');
+      } else if (stateName === 'error') {
+        errorEl.classList.remove('hidden');
+        paginationFooter.classList.add('hidden');
+      }
+    }
+
+    function filterRisk(risk, buttonElement) {
+      currentRiskFilter = risk;
+      const chips = document.querySelectorAll('.risk-chip');
+      chips.forEach(c => {
+        c.className = 'risk-chip inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-body-sm font-label-md bg-white border border-[#E5E7EB] text-[#111827] hover:border-gray-300 transition-all';
+      });
+
+      buttonElement.className = 'risk-chip active inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-body-sm font-label-md bg-primary-container text-white transition-all';
+
+      applyFilters();
+    }
+
+    function handleSearch(query) {
+      applyFilters();
+    }
+
+    function applyFilters() {
+      const searchVal = document.getElementById('search-input').value.toLowerCase().trim();
+      const rows = document.querySelectorAll('.transaction-row');
+      let visibleCount = 0;
+
+      rows.forEach(row => {
+        const rowRisk = row.getAttribute('data-risk');
+        const rowCode = row.getAttribute('data-code');
+        const rowRoute = row.getAttribute('data-route').toLowerCase();
+
+        const matchesRisk = (currentRiskFilter === 'all' || rowRisk === currentRiskFilter);
+        const matchesSearch = !searchVal || rowCode.includes(searchVal) || rowRoute.includes(searchVal);
+
+        if (matchesRisk && matchesSearch) {
+          row.style.display = '';
+          visibleCount++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+
+      const paginationInfo = document.getElementById('pagination-info');
+      const normalEl = document.getElementById('state-normal-rows');
+      const emptyEl = document.getElementById('state-empty-rows');
+
+      if (visibleCount === 0 && !normalEl.classList.contains('hidden')) {
+        normalEl.classList.add('hidden');
+        emptyEl.classList.remove('hidden');
+        document.getElementById('table-pagination-footer').classList.add('hidden');
+      } else if (visibleCount > 0 && !emptyEl.classList.contains('hidden')) {
+        emptyEl.classList.add('hidden');
+        normalEl.classList.remove('hidden');
+        document.getElementById('table-pagination-footer').classList.remove('hidden');
+      }
+
+      if (paginationInfo) {
+        paginationInfo.innerHTML = `Mostrando <span class="font-medium text-[#111827]">${visibleCount > 0 ? '1–' + visibleCount : '0'}</span> de <span class="font-medium text-[#111827]">247</span> resultados`;
+      }
+    }
+  </script>
+</body></html>

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PIXPROTECT - Prevenção de Fraude PIX</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration Verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface-variant": "#434655",
+            "inverse-primary": "#b4c5ff",
+            "tertiary-container": "#007d55",
+            "tertiary-fixed-dim": "#4edea3",
+            "surface-container-lowest": "#ffffff",
+            "error": "#ba1a1a",
+            "surface": "#f9f9ff",
+            "surface-container": "#e7eefe",
+            "on-background": "#151c27",
+            "on-secondary": "#ffffff",
+            "tertiary": "#006242",
+            "secondary-fixed": "#dce2f7",
+            "on-primary": "#ffffff",
+            "outline-variant": "#c3c6d7",
+            "on-tertiary-fixed-variant": "#005236",
+            "on-secondary-container": "#5c6274",
+            "secondary": "#575e70",
+            "on-error": "#ffffff",
+            "surface-variant": "#dce2f3",
+            "on-secondary-fixed": "#141b2b",
+            "on-primary-fixed": "#00174b",
+            "primary": "#004ac6",
+            "outline": "#737686",
+            "surface-container-highest": "#dce2f3",
+            "tertiary-fixed": "#6ffbbe",
+            "on-tertiary-container": "#bdffdb",
+            "primary-fixed-dim": "#b4c5ff",
+            "surface-dim": "#d3daea",
+            "secondary-fixed-dim": "#c0c6db",
+            "surface-container-high": "#e2e8f8",
+            "inverse-on-surface": "#ebf1ff",
+            "background": "#f9f9ff",
+            "on-tertiary-fixed": "#002113",
+            "surface-bright": "#f9f9ff",
+            "primary-container": "#2563eb",
+            "on-error-container": "#93000a",
+            "on-tertiary": "#ffffff",
+            "on-primary-container": "#eeefff",
+            "surface-tint": "#0053db",
+            "surface-container-low": "#f0f3ff",
+            "primary-fixed": "#dbe1ff",
+            "on-secondary-fixed-variant": "#404758",
+            "secondary-container": "#d9dff5",
+            "error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#003ea8",
+            "on-surface": "#151c27",
+            "inverse-surface": "#2a313d"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "margin": "1.5rem",
+            "space-xl": "2rem",
+            "gutter-mobile": "1rem",
+            "space-xs": "0.25rem",
+            "gutter": "1.5rem",
+            "space-lg": "1.5rem",
+            "space-md": "1rem",
+            "margin-mobile": "1rem"
+          },
+          "fontFamily": {
+            "headline-xl-mobile": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-xl": ["Inter"],
+            "body-sm": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-lg": ["Inter"],
+            "code-mono": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-md": ["Inter"]
+          },
+          "fontSize": {
+            "headline-xl-mobile": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["1rem", { "lineHeight": "1.5rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-xl": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.025em", "fontWeight": "700" }],
+            "body-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-lg": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "code-mono": ["0.8125rem", { "lineHeight": "1.125rem", "letterSpacing": "0em", "fontWeight": "500" }],
+            "label-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0em", "fontWeight": "500" }],
+            "headline-lg-mobile": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-md": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex flex-col md:flex-row">
+<!-- ========================================================================= -->
+<!-- SIDEBAR LATERAL (Conforme especificado em SideNavBar JSON) -->
+<!-- ========================================================================= -->
+<aside class="w-full md:w-64 bg-surface-container-lowest border-r border-outline-variant shadow-sm flex flex-col justify-between shrink-0 z-20 md:fixed md:top-0 md:left-0 md:h-screen">
+<!-- Topo da Sidebar -->
+<div class="p-space-md">
+<!-- Marca & Logo Shield -->
+<div class="flex items-center gap-space-sm mb-space-lg pb-space-sm border-b border-surface-container">
+<div class="w-9 h-9 rounded-lg bg-primary-container text-on-primary flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-on-primary" data-icon="shield" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-md text-headline-md font-bold text-primary tracking-tight">PIXPROTECT</span>
+<span class="font-label-sm text-body-sm px-1.5 py-0.5 rounded bg-surface-container text-secondary font-medium">v1.0</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Prevenção de Fraude PIX</p>
+</div>
+</div>
+<!-- Menu de Navegação (2 Itens Obrigatórios) -->
+<nav aria-label="Navegação Principal" class="flex flex-col gap-1.5">
+<!-- Item Ativo: Dashboard (Exact style_active_navigation) -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm bg-primary-container text-on-primary-container rounded-lg font-medium transition-colors duration-150" href="#dashboard">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<!-- Item Inativo: Transações (Exact style_inactive_navigation + universal hover) -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant rounded-lg font-normal hover:bg-surface-container transition-colors duration-150" href="#transacoes">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-md text-label-md">Transações</span>
+</a>
+</nav>
+</div>
+<!-- Rodapé da Sidebar: Ambiente Operacional -->
+<div class="p-space-md border-t border-outline-variant/40 bg-surface-container-low/50">
+<div class="flex items-center justify-between text-body-sm">
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-tertiary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-sm text-label-sm text-tertiary">Ambiente: Produção (Ativo)</span>
+</div>
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span>
+</span>
+</div>
+</div>
+</aside>
+<!-- ========================================================================= -->
+<!-- ÁREA DE CONTEÚDO PRINCIPAL -->
+<!-- ========================================================================= -->
+<main class="flex-1 md:ml-64 flex flex-col min-h-screen overflow-x-hidden">
+<!-- TopNavBar Opcional de Apoio e Contexto Conforme JSON -->
+<header class="sticky top-0 w-full bg-surface-container-lowest border-b border-outline-variant z-10 shadow-sm">
+<div class="flex justify-between items-center w-full px-space-lg py-space-md">
+<!-- Indicador de Status do Motor -->
+<div class="flex items-center gap-space-md">
+<span class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight md:hidden">PIXPROTECT</span>
+<div class="hidden sm:flex items-center gap-space-xs px-2.5 py-1 rounded-full bg-surface-container-low text-secondary border border-outline-variant/60 font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+            Motor Heurístico Online • Latência: 18ms
+          </div>
+</div>
+<!-- Ações do TopBar -->
+<div class="flex items-center gap-space-md">
+<!-- Toggle de Visualização / Skeleton Feedback -->
+<div class="flex items-center bg-surface-container-low p-1 rounded-lg border border-outline-variant/60">
+<button class="px-2.5 py-1 rounded text-body-sm font-label-sm bg-surface-container-lowest text-primary font-medium shadow-xs transition-colors" id="btn-real-data" onclick="toggleView('real')">
+              Dados Reais
+            </button>
+<button class="px-2.5 py-1 rounded text-body-sm font-label-sm text-on-surface-variant hover:text-on-surface transition-colors" id="btn-skeleton-data" onclick="toggleView('skeleton')">
+              Prévia Skeleton
+            </button>
+</div>
+<!-- Ícones Trailing Actions do JSON -->
+<button aria-label="Notificações" class="text-on-surface-variant hover:bg-surface-container p-2 rounded-lg transition-colors duration-150 flex items-center">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button aria-label="Ajuda e Suporte" class="text-on-surface-variant hover:bg-surface-container p-2 rounded-lg transition-colors duration-150 flex items-center">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<!-- Avatar do Analista -->
+<div class="flex items-center gap-space-xs pl-space-sm border-l border-outline-variant/60">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold text-label-sm" title="Foto de perfil do analista de risco">
+              AR
+            </div>
+<div class="hidden lg:block text-left">
+<p class="font-label-sm text-label-sm text-on-surface leading-tight">Analista Risco</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-tight">Nível 3 • SOC</p>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- CONTEÚDO DO DASHBOARD -->
+<div class="p-space-lg max-w-7xl w-full mx-auto space-y-space-lg flex-1">
+<!-- CABEÇALHO DA PÁGINA: Título e CTA Primária -->
+<section class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md pt-space-xs">
+<div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface font-bold tracking-tight">Dashboard</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">Visão geral das transações analisadas</p>
+</div>
+<div class="flex items-center gap-space-sm">
+<!-- CTA Primário Definido no JSON & Requisito -->
+<button class="inline-flex items-center justify-center gap-space-xs px-4 h-[38px] bg-primary-container text-on-primary font-label-md text-label-md rounded-lg shadow-sm hover:bg-primary transition-colors focus:ring-2 focus:ring-primary-fixed duration-150" id="btn-generate-sim" onclick="gerarTransacaoTeste()">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+<span>Gerar transação de teste</span>
+</button>
+</div>
+</section>
+<!-- FEEDBACK TOAST DE TRANSAÇÃO SIMULADA (Microinteração) -->
+<div class="hidden transition-all duration-200 bg-surface-container-lowest border border-tertiary-container/40 p-space-md rounded-lg shadow-sm flex items-center justify-between" id="sim-toast">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-tertiary" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface">Transação PIX simulada gerada com sucesso! Análise de heurística concluída em 14ms.</span>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface p-1" onclick="document.getElementById('sim-toast').classList.add('hidden')">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<!-- ========================================================================= -->
+<!-- GRID DE 4 CARDS DE RESUMO (Métricas Principais) -->
+<!-- Desktop: 4 colunas, Tablet: 2 colunas, Mobile: 1 coluna, Gap: 24px (space-lg) -->
+<!-- ========================================================================= -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg" id="metrics-container">
+<!-- CARD 1: Total de transações -->
+<article class="bg-surface-container-lowest border border-outline-variant/60 rounded-lg p-space-lg shadow-sm flex flex-col justify-between transition-all hover:shadow-md">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-body-sm text-body-sm text-secondary font-medium">Total de transações</span>
+<span class="p-1.5 rounded-lg bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="receipt_long">receipt_long</span>
+</span>
+</div>
+<div class="metric-value font-headline-xl text-headline-xl font-bold text-on-surface tabular-nums">254</div>
+</div>
+<div class="mt-space-md pt-space-xs border-t border-surface-container flex items-center text-body-sm text-on-surface-variant">
+<span class="font-label-sm text-tertiary font-semibold mr-1 flex items-center">
+<span class="material-symbols-outlined text-sm align-middle mr-0.5" data-icon="trending_up">trending_up</span>+18%
+            </span>
+<span class="truncate">vs ontem • 24h</span>
+</div>
+</article>
+<!-- CARD 2: Alto risco -->
+<article class="bg-surface-container-lowest border border-error/30 rounded-lg p-space-lg shadow-sm flex flex-col justify-between transition-all hover:shadow-md">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-body-sm text-body-sm text-error font-semibold flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+                Alto risco
+              </span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-body-sm font-label-sm bg-error-container text-on-error-container font-semibold">
+                Ação recomendada
+              </span>
+</div>
+<div class="metric-value font-headline-xl text-headline-xl font-bold text-error tabular-nums">12</div>
+</div>
+<div class="mt-space-md pt-space-xs border-t border-surface-container flex items-center justify-between text-body-sm text-on-surface-variant">
+<span class="text-error font-medium">4,7% do total analisado</span>
+<span class="material-symbols-outlined text-error" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+</article>
+<!-- CARD 3: Valor sob risco alto -->
+<article class="bg-surface-container-lowest border border-outline-variant/60 rounded-lg p-space-lg shadow-sm flex flex-col justify-between transition-all hover:shadow-md">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-body-sm text-body-sm text-secondary font-medium">Valor sob risco alto</span>
+<span class="p-1.5 rounded-lg bg-error-container text-on-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-error" data-icon="payments">payments</span>
+</span>
+</div>
+<div class="metric-value font-headline-lg text-headline-lg font-bold text-on-surface tabular-nums">R$ 84.620,00</div>
+</div>
+<div class="mt-space-md pt-space-xs border-t border-surface-container text-body-sm text-on-surface-variant truncate">
+            Total de <span class="font-medium text-on-surface">R$ 1.428.950,00</span> transacionados
+          </div>
+</article>
+<!-- CARD 4: Score médio -->
+<article class="bg-surface-container-lowest border border-outline-variant/60 rounded-lg p-space-lg shadow-sm flex flex-col justify-between transition-all hover:shadow-md">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-body-sm text-body-sm text-secondary font-medium">Score médio</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-body-sm font-label-sm bg-tertiary-container/20 text-tertiary font-semibold">
+                Escala 0-100
+              </span>
+</div>
+<div class="metric-value flex items-baseline gap-space-xs">
+<span class="font-headline-xl text-headline-xl font-bold text-tertiary tabular-nums">24</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ 100</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs border-t border-surface-container flex items-center text-body-sm text-tertiary font-medium">
+<span class="w-2 h-2 rounded-full bg-tertiary mr-1.5"></span>
+            Risco baixo consolidado (&lt; 30)
+          </div>
+</article>
+</section>
+<!-- ========================================================================= -->
+<!-- SEÇÃO DE GRÁFICOS (Grid de 2 Colunas Desktop / 1 Coluna Telas Menores) -->
+<!-- ========================================================================= -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+<!-- GRÁFICO 1: Transações por nível de risco -->
+<div class="bg-surface-container-lowest border border-outline-variant/60 rounded-lg p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between border-b border-surface-container pb-space-md mb-space-md">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold">Transações por nível de risco</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Distribuição das 254 transações avaliadas</p>
+</div>
+<span class="material-symbols-outlined text-secondary" data-icon="pie_chart">pie_chart</span>
+</div>
+<!-- Barras Horizontais Analíticas -->
+<div class="space-y-space-md pt-space-xs">
+<!-- Item 1: Baixo Risco -->
+<div class="p-space-sm rounded-lg bg-surface-container-low/40 border border-surface-container">
+<div class="flex items-center justify-between mb-1.5 text-body-sm">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-[#10b981]"></span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Baixo risco</span>
+<span class="font-code-mono text-body-sm text-secondary">(Score 0-29)</span>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md font-bold text-on-surface tabular-nums">218</span>
+<span class="text-secondary text-body-sm"> (85,8%)</span>
+</div>
+</div>
+<!-- Barra de Progresso Realista -->
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden mb-1.5">
+<div class="h-full bg-[#10b981] rounded-full transition-all duration-500" style="width: 85.8%;"></div>
+</div>
+<div class="flex items-center justify-between text-body-sm text-on-surface-variant">
+<span>Volume financeiro aprovado:</span>
+<span class="font-code-mono font-medium text-on-surface tabular-nums">R$ 1.180.400,00</span>
+</div>
+</div>
+<!-- Item 2: Médio Risco -->
+<div class="p-space-sm rounded-lg bg-surface-container-low/40 border border-surface-container">
+<div class="flex items-center justify-between mb-1.5 text-body-sm">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-[#f59e0b]"></span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Médio risco</span>
+<span class="font-code-mono text-body-sm text-secondary">(Score 30-69)</span>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md font-bold text-on-surface tabular-nums">24</span>
+<span class="text-secondary text-body-sm"> (9,4%)</span>
+</div>
+</div>
+<!-- Barra de Progresso Realista -->
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden mb-1.5">
+<div class="h-full bg-[#f59e0b] rounded-full transition-all duration-500" style="width: 9.4%;"></div>
+</div>
+<div class="flex items-center justify-between text-body-sm text-on-surface-variant">
+<span>Volume retido em esteira preventiva:</span>
+<span class="font-code-mono font-medium text-on-surface tabular-nums">R$ 163.930,00</span>
+</div>
+</div>
+<!-- Item 3: Alto Risco -->
+<div class="p-space-sm rounded-lg bg-error-container/20 border border-error/20">
+<div class="flex items-center justify-between mb-1.5 text-body-sm">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-[#ef4444]"></span>
+<span class="font-label-md text-label-md font-semibold text-error">Alto risco</span>
+<span class="font-code-mono text-body-sm text-error/80">(Score 70-100)</span>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md font-bold text-error tabular-nums">12</span>
+<span class="text-error/80 text-body-sm"> (4,7%)</span>
+</div>
+</div>
+<!-- Barra de Progresso Realista -->
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden mb-1.5">
+<div class="h-full bg-[#ef4444] rounded-full transition-all duration-500" style="width: 4.7%;"></div>
+</div>
+<div class="flex items-center justify-between text-body-sm text-on-surface-variant">
+<span class="text-error font-medium">Bloqueio preventivo obrigatório:</span>
+<span class="font-code-mono font-bold text-error tabular-nums">R$ 84.620,00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Rodapé do Card com Taxa de Rejeição Automática -->
+<div class="mt-space-md pt-space-sm border-t border-surface-container flex items-center justify-between text-body-sm text-secondary">
+<span>Eficácia heurística do modelo:</span>
+<span class="font-label-sm text-tertiary font-bold">99.98% de precisão</span>
+</div>
+</div>
+<!-- GRÁFICO 2: Transações por hora -->
+<div class="bg-surface-container-lowest border border-outline-variant/60 rounded-lg p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between border-b border-surface-container pb-space-md mb-space-sm">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold">Transações por hora</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Volume horário e variação de score médio (24h)</p>
+</div>
+<div class="flex items-center gap-space-sm text-body-sm">
+<span class="inline-flex items-center gap-1 font-label-sm text-body-sm text-secondary">
+<span class="w-2.5 h-0.5 bg-primary-container"></span> Volume
+                </span>
+<span class="inline-flex items-center gap-1 font-label-sm text-body-sm text-secondary">
+<span class="w-2 h-2 rounded-full border border-secondary"></span> Pico (15h)
+                </span>
+</div>
+</div>
+<!-- Gráfico SVG Vetorial Limpo & Preciso com 24 Pontos -->
+<div class="relative w-full h-56 pt-2">
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 540 180">
+<!-- Definições de Gradientes -->
+<defs>
+<lineargradient id="areaGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#2563EB" stop-opacity="0.22"></stop>
+<stop offset="100%" stop-color="#2563EB" stop-opacity="0.00"></stop>
+</lineargradient>
+</defs>
+<!-- Gridlines Pontilhadas (#E5E7EB) -->
+<line stroke="#E5E7EB" stroke-dasharray="3,3" stroke-width="1" x1="0" x2="540" y1="30" y2="30"></line>
+<line stroke="#E5E7EB" stroke-dasharray="3,3" stroke-width="1" x1="0" x2="540" y1="75" y2="75"></line>
+<line stroke="#E5E7EB" stroke-dasharray="3,3" stroke-width="1" x1="0" x2="540" y1="120" y2="120"></line>
+<line stroke="#D1D5DB" stroke-width="1" x1="0" x2="540" y1="160" y2="160"></line>
+<!-- Eixo Y: Etiquetas de Volume -->
+<text class="text-[9px] fill-gray-400 font-mono" x="5" y="26">30 tx/h</text>
+<text class="text-[9px] fill-gray-400 font-mono" x="5" y="71">20 tx/h</text>
+<text class="text-[9px] fill-gray-400 font-mono" x="5" y="116">10 tx/h</text>
+<!-- Área Suave da Curva de Volume -->
+<!-- 24 Horas mapeadas de X=15 a X=530 -->
+<path d="M 15 155
+                         L 37 156
+                         L 60 158
+                         L 82 157
+                         L 105 150
+                         L 127 140
+                         L 150 120
+                         L 172 105
+                         L 195 85
+                         L 217 78
+                         L 240 70
+                         L 262 65
+                         L 285 58
+                         L 307 48
+                         L 330 38
+                         L 352 32
+                         L 375 42
+                         L 397 55
+                         L 420 72
+                         L 442 90
+                         L 465 110
+                         L 487 130
+                         L 510 145
+                         L 530 152
+                         L 530 160
+                         L 15 160 Z" fill="url(#areaGradient)"></path>
+<!-- Linha Suave de Volume em Azul (#2563EB) -->
+<path d="M 15 155
+                         Q 26 156, 37 156
+                         T 60 158
+                         T 82 157
+                         T 105 150
+                         T 127 140
+                         T 150 120
+                         T 172 105
+                         T 195 85
+                         T 217 78
+                         T 240 70
+                         T 262 65
+                         T 285 58
+                         T 307 48
+                         T 330 38
+                         T 352 32
+                         T 375 42
+                         T 397 55
+                         T 420 72
+                         T 442 90
+                         T 465 110
+                         T 487 130
+                         T 510 145
+                         T 530 152" fill="none" stroke="#2563EB" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+<!-- Ponto e Tooltip no Horário de Pico (15:00 - X=352, Y=32) -->
+<!-- Marcador de Pico com Pulso -->
+<circle class="cursor-pointer" cx="352" cy="32" fill="#2563EB" r="5" stroke="#FFFFFF" stroke-width="2"></circle>
+<line stroke="#2563EB" stroke-dasharray="2,2" stroke-width="1.2" x1="352" x2="352" y1="32" y2="160"></line>
+<!-- Tooltip Contextual Embutido no SVG -->
+<g transform="translate(290, 8)">
+<rect fill="#151C27" height="22" rx="4" width="124"></rect>
+<text fill="#FFFFFF" font-family="Inter" font-size="10" font-weight="600" text-anchor="middle" x="62" y="15">
+                    15:00 • 28 tx (Pico)
+                  </text>
+</g>
+</svg>
+</div>
+<!-- Eixo X com Marcos de Tempo (24h) -->
+<div class="flex justify-between items-center text-body-sm text-secondary font-code-mono mt-1 px-1">
+<span>00:00</span>
+<span>04:00</span>
+<span>08:00</span>
+<span>12:00</span>
+<span class="font-bold text-primary">15:00</span>
+<span>18:00</span>
+<span>21:00</span>
+<span>23:59</span>
+</div>
+</div>
+<!-- Rodapé do Card com Variação de Score -->
+<div class="mt-space-md pt-space-sm border-t border-surface-container flex items-center justify-between text-body-sm text-secondary">
+<span>Score médio no pico: <strong class="text-on-surface">31 pontos</strong></span>
+<span class="font-label-sm text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span> Monitoramento contínuo
+            </span>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- AMOSTRA DA TABELA DE OPERAÇÃO (Contexto de Auditoria e Transparência) -->
+<!-- ========================================================================= -->
+<section class="bg-surface-container-lowest border border-outline-variant/60 rounded-lg p-space-lg shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-space-md border-b border-surface-container gap-space-sm">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-semibold">Últimas Transações Analisadas</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Log em tempo real com avaliação de regras heurísticas</p>
+</div>
+<a class="font-label-md text-label-md text-primary font-semibold hover:underline flex items-center gap-1" href="#transacoes">
+            Ver todas no menu Transações
+            <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="overflow-x-auto mt-space-md">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-secondary text-body-sm font-label-sm uppercase border-b border-outline-variant/40">
+<th class="py-2.5 px-3">Horário</th>
+<th class="py-2.5 px-3">ID PIX (End-to-End)</th>
+<th class="py-2.5 px-3">Pagador / Chave</th>
+<th class="py-2.5 px-3 text-right">Valor</th>
+<th class="py-2.5 px-3 text-center">Score</th>
+<th class="py-2.5 px-3 text-center">Risco</th>
+<th class="py-2.5 px-3 text-right">Ação</th>
+</tr>
+</thead>
+<tbody class="text-body-md font-body-md divide-y divide-surface-container" id="transaction-feed">
+<!-- Linha 1: Alto Risco -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-3 font-code-mono text-body-sm text-on-surface-variant">15:42:19</td>
+<td class="py-3 px-3 font-code-mono text-body-sm text-primary font-medium">E004169992024...482a</td>
+<td class="py-3 px-3 text-body-sm">
+<div class="font-medium text-on-surface">Marcos P. Silva</div>
+<div class="text-secondary text-body-sm font-code-mono">CPF ***.491.208-**</div>
+</td>
+<td class="py-3 px-3 text-right font-code-mono font-bold text-on-surface tabular-nums">R$ 24.500,00</td>
+<td class="py-3 px-3 text-center font-code-mono font-bold text-error">94</td>
+<td class="py-3 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-body-sm font-label-sm bg-[#FEF2F2] text-[#991B1B] border border-[#FECACA]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#EF4444]"></span> Alto Risco
+                  </span>
+</td>
+<td class="py-3 px-3 text-right">
+<button class="px-2.5 py-1 rounded text-body-sm font-label-sm bg-[#FEF2F2] text-[#DC2626] border border-[#FCA5A5] hover:bg-[#EF4444] hover:text-white transition-colors">
+                    Bloquear
+                  </button>
+</td>
+</tr>
+<!-- Linha 2: Baixo Risco -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-3 font-code-mono text-body-sm text-on-surface-variant">15:41:02</td>
+<td class="py-3 px-3 font-code-mono text-body-sm text-secondary">E004169992024...109b</td>
+<td class="py-3 px-3 text-body-sm">
+<div class="font-medium text-on-surface">Fernanda Costa</div>
+<div class="text-secondary text-body-sm font-code-mono">Tel +55 11 98***-**12</div>
+</td>
+<td class="py-3 px-3 text-right font-code-mono font-medium text-on-surface tabular-nums">R$ 150,00</td>
+<td class="py-3 px-3 text-center font-code-mono font-medium text-tertiary">08</td>
+<td class="py-3 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-body-sm font-label-sm bg-[#ECFDF5] text-[#065F46] border border-[#A7F3D0]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span> Baixo Risco
+                  </span>
+</td>
+<td class="py-3 px-3 text-right">
+<span class="font-body-sm text-tertiary font-medium">Aprovado</span>
+</td>
+</tr>
+<!-- Linha 3: Médio Risco -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-3 font-code-mono text-body-sm text-on-surface-variant">15:39:48</td>
+<td class="py-3 px-3 font-code-mono text-body-sm text-secondary">E004169992024...873c</td>
+<td class="py-3 px-3 text-body-sm">
+<div class="font-medium text-on-surface">Distribuidora Alfa Ltda</div>
+<div class="text-secondary text-body-sm font-code-mono">CNPJ 41.***.***/0001</div>
+</td>
+<td class="py-3 px-3 text-right font-code-mono font-medium text-on-surface tabular-nums">R$ 6.840,00</td>
+<td class="py-3 px-3 text-center font-code-mono font-medium text-[#B45309]">48</td>
+<td class="py-3 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-body-sm font-label-sm bg-[#FFFBEB] text-[#92400E] border border-[#FDE68A]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#F59E0B]"></span> Médio Risco
+                  </span>
+</td>
+<td class="py-3 px-3 text-right">
+<button class="px-2.5 py-1 rounded text-body-sm font-label-sm bg-surface-container-lowest text-on-surface border border-outline-variant hover:bg-surface-container transition-colors">
+                    Auditar
+                  </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+<!-- ========================================================================= -->
+<!-- JAVASCRIPT: MICRO-INTERAÇÕES & TOGGLE DE ESTADO SKELETON -->
+<!-- ========================================================================= -->
+<script>
+    // Função para simular inserção instantânea de transação de teste
+    function gerarTransacaoTeste() {
+      const toast = document.getElementById('sim-toast');
+      toast.classList.remove('hidden');
+
+      // Atualiza valores nas métricas
+      const metricValues = document.querySelectorAll('.metric-value');
+      if (metricValues[0]) {
+        let currentTotal = parseInt(metricValues[0].innerText) || 254;
+        metricValues[0].innerText = currentTotal + 1;
+      }
+
+      // Adiciona nova linha no feed
+      const tbody = document.getElementById('transaction-feed');
+      if (tbody) {
+        const now = new Date();
+        const timeStr = now.toTimeString().split(' ')[0];
+        const newRow = document.createElement('tr');
+        newRow.className = "hover:bg-surface-container-low/60 transition-colors animate-pulse";
+        newRow.innerHTML = `
+          <td class="py-3 px-3 font-code-mono text-body-sm text-on-surface-variant">${timeStr}</td>
+          <td class="py-3 px-3 font-code-mono text-body-sm text-primary font-medium">E004169992024...sim${Math.floor(Math.random() * 90 + 10)}</td>
+          <td class="py-3 px-3 text-body-sm">
+            <div class="font-medium text-on-surface">Simulação Sandbox</div>
+            <div class="text-secondary text-body-sm font-code-mono">Chave Aleatória UUID</div>
+          </td>
+          <td class="py-3 px-3 text-right font-code-mono font-medium text-on-surface tabular-nums">R$ 1.250,00</td>
+          <td class="py-3 px-3 text-center font-code-mono font-medium text-tertiary">14</td>
+          <td class="py-3 px-3 text-center">
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-body-sm font-label-sm bg-[#ECFDF5] text-[#065F46] border border-[#A7F3D0]">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span> Baixo Risco
+            </span>
+          </td>
+          <td class="py-3 px-3 text-right">
+            <span class="font-body-sm text-tertiary font-medium">Validado</span>
+          </td>
+        `;
+        tbody.prepend(newRow);
+      }
+
+      // Esconde o toast após 4 segundos
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 4000);
+    }
+
+    // Toggle para Skeleton Preview solicitado nas especificações
+    function toggleView(mode) {
+      const realBtn = document.getElementById('btn-real-data');
+      const skelBtn = document.getElementById('btn-skeleton-data');
+      const metrics = document.querySelectorAll('.metric-value');
+
+      if (mode === 'skeleton') {
+        skelBtn.className = "px-2.5 py-1 rounded text-body-sm font-label-sm bg-surface-container-lowest text-primary font-medium shadow-xs transition-colors";
+        realBtn.className = "px-2.5 py-1 rounded text-body-sm font-label-sm text-on-surface-variant hover:text-on-surface transition-colors";
+
+        metrics.forEach(el => {
+          el.dataset.prevVal = el.innerHTML;
+          el.innerHTML = '<div class="h-8 w-24 bg-surface-container-high rounded animate-pulse"></div>';
+        });
+      } else {
+        realBtn.className = "px-2.5 py-1 rounded text-body-sm font-label-sm bg-surface-container-lowest text-primary font-medium shadow-xs transition-colors";
+        skelBtn.className = "px-2.5 py-1 rounded text-body-sm font-label-sm text-on-surface-variant hover:text-on-surface transition-colors";
+
+        metrics.forEach(el => {
+          if (el.dataset.prevVal) {
+            el.innerHTML = el.dataset.prevVal;
+          }
+        });
+      }
+    }
+  </script>
+</body></html>
